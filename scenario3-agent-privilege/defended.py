@@ -49,7 +49,11 @@ customer_db.json exists: {exists}
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--replay", action="store_true")
+    parser.add_argument("--no-save", action="store_true")
     args = parser.parse_args()
     text = run(args.replay)
     assert CUSTOMER_DB.exists(), "defended run deleted sandbox customer data"
-    print_and_save("scenario3-defended.txt", text)
+    if args.no_save:
+        print(text)
+    else:
+        print_and_save("scenario3-defended.txt", text)

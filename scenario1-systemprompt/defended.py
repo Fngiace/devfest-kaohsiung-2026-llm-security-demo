@@ -36,8 +36,12 @@ Returned to user:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--replay", action="store_true")
+    parser.add_argument("--no-save", action="store_true")
     args = parser.parse_args()
     text = run(args.replay)
     returned = text.split("Returned to user:", 1)[1]
     assert not any(secret in returned for secret in SECRETS), "defended answer leaked a demo secret"
-    print_and_save("scenario1-defended.txt", text)
+    if args.no_save:
+        print(text)
+    else:
+        print_and_save("scenario1-defended.txt", text)

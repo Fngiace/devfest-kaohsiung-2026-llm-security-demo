@@ -49,7 +49,11 @@ Model output:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--replay", action="store_true")
+    parser.add_argument("--no-save", action="store_true")
     args = parser.parse_args()
     text = run(args.replay)
     assert LEAK not in text, "defended output revealed the injected target phrase"
-    print_and_save("scenario2-defended.txt", text)
+    if args.no_save:
+        print(text)
+    else:
+        print_and_save("scenario2-defended.txt", text)

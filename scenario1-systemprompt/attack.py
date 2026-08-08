@@ -43,7 +43,11 @@ def run(replay: bool = False) -> str:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--replay", action="store_true")
+    parser.add_argument("--no-save", action="store_true")
     args = parser.parse_args()
     text = run(args.replay)
     assert any(secret in text for secret in SECRETS), "attack did not leak a demo secret"
-    print_and_save("scenario1-attack.txt", text)
+    if args.no_save:
+        print(text)
+    else:
+        print_and_save("scenario1-attack.txt", text)

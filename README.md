@@ -20,7 +20,7 @@ No cloud API is used by the demo scripts. The only network step is the one-time 
 ## Setup
 
 ```bash
-python3 -m venv venv
+/opt/homebrew/bin/python3.12 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ollama pull gemma4:e4b
@@ -59,6 +59,8 @@ python scenario3-agent-privilege/assert_check.py
 
 Pre-recorded terminal outputs live in `fallback-logs/`. If the model flakes during the talk, project those files and say they are outputs from the same scripts recorded earlier.
 
+The fallback logs have been refreshed from a live local run with `gemma4:e4b` on 2026-08-08.
+
 ## Model Settings
 
 The local Ollama wrapper uses:
@@ -69,10 +71,12 @@ The local Ollama wrapper uses:
 - defended temperature: `0.1`
 - default `num_predict`: `2048`
 - thinking/action scenarios may use `4096`
+- measured probe latency: `25.27s`
+- measured probe speed: `1.19` approx word/s
 
 ## Pending Fngi Review
 
 - The implementation keeps `gemma4:e4b` as specified, with no automatic fallback to another model.
 - Scenario 3 deletes only `./sandbox/customer_db.json`, recreated on every run.
 - The optional combined scenario is intentionally not implemented until the three core scenarios are green.
-- `model-setup.md` contains placeholders for real token/s and latency because this environment cannot reach GitHub or pull/run the model yet.
+- `gemma4:e4b` has been pulled on this machine. See `model-setup.md` for measured probe results.

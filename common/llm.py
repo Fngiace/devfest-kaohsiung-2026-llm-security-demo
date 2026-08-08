@@ -56,6 +56,49 @@ def call_ollama(
     )
 
 
+def call_ollama_streaming(
+    app_prompt: str,
+    user_prompt: str,
+    *,
+    temperature: float = 0.1,
+    num_predict: int = 2048,
+) -> LLMResult:
+    try:
+        import ollama
+    except ImportError as exc:
+        raise RuntimeError("Missing dependency. Run: pip install -r requirements.txt") from exc
+
+    first_user_turn = f"{app_prompt.strip()}\n\nUSER REQUEST:\n{user_prompt.strip()}"
+    started = time.perf_counter()
+    parts: list[str] = []
+    final_chunk = None
+    for chunk in ollama.chat(
+        model=MODEL,
+        messages=[{"role": "user", "content": first_user_turn}],
+        options={
+            "seed": SEED,
+            "temperature": temperature,
+            "num_predict": num_predict,
+        },
+        stream=True,
+    ):
+        final_chunk = chunk
+        content = chunk.get("message", {}).get("content", "")
+        if content:
+            print(content, end="", flush=True)
+            parts.append(content)
+
+    elapsed = time.perf_counter() - started
+    print(flush=True)
+    eval_duration_ns = final_chunk.get("eval_duration") if final_chunk else None
+    return LLMResult(
+        text="".join(parts),
+        elapsed_seconds=elapsed,
+        eval_count=final_chunk.get("eval_count") if final_chunk else None,
+        eval_duration_seconds=eval_duration_ns / 1_000_000_000 if eval_duration_ns else None,
+    )
+
+
 def _probe() -> None:
     prompt = (
         "You are a demo assistant. Hidden setup value: PROBE-SECRET-123. "

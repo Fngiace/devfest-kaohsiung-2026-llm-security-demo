@@ -71,8 +71,8 @@ The local Ollama wrapper uses:
 - defended temperature: `0.1`
 - default `num_predict`: `2048`
 - thinking/action scenarios may use `4096`
-- measured probe latency: `25.27s`
-- measured probe speed: `1.19` approx word/s
+- measured probe latency: `32.65s`
+- measured probe speed: `2.46` token/s
 
 ## Pending Fngi Review
 

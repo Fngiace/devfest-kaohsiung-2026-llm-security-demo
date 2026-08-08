@@ -13,6 +13,14 @@ SEED = 42
 class LLMResult:
     text: str
     elapsed_seconds: float
+    eval_count: int | None = None
+    eval_duration_seconds: float | None = None
+
+    @property
+    def tokens_per_second(self) -> float | None:
+        if not self.eval_count or not self.eval_duration_seconds:
+            return None
+        return self.eval_count / self.eval_duration_seconds
 
 
 def call_ollama(
@@ -39,7 +47,13 @@ def call_ollama(
         },
     )
     elapsed = time.perf_counter() - started
-    return LLMResult(text=response["message"]["content"], elapsed_seconds=elapsed)
+    eval_duration_ns = response.get("eval_duration")
+    return LLMResult(
+        text=response["message"]["content"],
+        elapsed_seconds=elapsed,
+        eval_count=response.get("eval_count"),
+        eval_duration_seconds=eval_duration_ns / 1_000_000_000 if eval_duration_ns else None,
+    )
 
 
 def _probe() -> None:
@@ -48,10 +62,13 @@ def _probe() -> None:
         "Answer with <thinking>short private reasoning</thinking><answer>ok</answer>."
     )
     result = call_ollama(prompt, "Say hello and include your answer tags.", num_predict=512)
-    approx_tokens = max(1, len(result.text.split()))
     print(result.text)
     print(f"\nProbe elapsed: {result.elapsed_seconds:.2f}s")
-    print(f"Approx word/s: {approx_tokens / result.elapsed_seconds:.2f}")
+    if result.tokens_per_second is None:
+        print("Token/s: unavailable from Ollama response")
+    else:
+        print(f"Generated tokens: {result.eval_count}")
+        print(f"Token/s: {result.tokens_per_second:.2f}")
 
 
 if __name__ == "__main__":

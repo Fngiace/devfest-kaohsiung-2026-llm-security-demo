@@ -1,5 +1,15 @@
 venv/
 .venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+node_modules/
+.promptfoo/
 __pycache__/
 *.pyc
 .pycache_tmp/

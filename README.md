@@ -2,6 +2,8 @@
 
 COSCUP 2026 demo repo for "你的 LLM App 上線第一天就該做的三件事".
 
+Security notice: All credentials, access codes, user identities, endpoints, and secrets appearing in this repository are synthetic test data and are not valid production credentials.
+
 This repo contains three offline, local-first demos that show an attack and a fix:
 
 1. System prompt protection with `NemoClaw output_rail`

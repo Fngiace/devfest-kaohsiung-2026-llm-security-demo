@@ -1,0 +1,18 @@
+diff --git a/tech-demo/b_fail_open/naive_app.py b/tech-demo/b_fail_open/fixed_app.py
+index 923364e..11b0e36 100644
+--- a/tech-demo/b_fail_open/naive_app.py
++++ b/tech-demo/b_fail_open/fixed_app.py
+@@ -1,8 +1,9 @@
+ import re
++from nemoclaw.output_rail import SAFE_MESSAGE, guard_answer
+ 
+ 
+ def render(raw_output: str, canaries: list[str]) -> str:
+-    match = re.search(r"<answer>(.*?)</answer>", raw_output, flags=re.S | re.I)
+-    if not match:
+-        return raw_output  # Deliberately vulnerable: fail open.
+-    return match.group(1).strip()
++    matches = list(re.finditer(r"<answer>([^<>]*)</answer>", raw_output, flags=re.S | re.I))
++    if len(matches) != 1 or len(re.findall(r"</?answer\b", raw_output, re.I)) != 2:
++        return SAFE_MESSAGE
++    return guard_answer(matches[0].group(0), canaries)

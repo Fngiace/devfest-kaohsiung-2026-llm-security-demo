@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.6, pytest-9.2.0, pluggy-1.7.0 -- /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1
+configfile: pytest.ini
+plugins: anyio-4.14.2
+collecting ... collected 4 items
+
+tests/test_harness.py::test_control_must_be_detected PASSED              [ 25%]
+tests/test_harness.py::test_skipped_assertion_is_invalid PASSED          [ 50%]
+tests/test_harness.py::test_missing_recorded_answer_is_invalid PASSED    [ 75%]
+tests/test_harness.py::test_cli_fixtures_and_warning PASSED              [100%]
+
+=============================== warnings summary ===============================
+venv/lib/python3.14/site-packages/anyio/pytest_plugin.py:14
+  /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/lib/python3.14/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+========================= 4 passed, 1 warning in 0.18s =========================

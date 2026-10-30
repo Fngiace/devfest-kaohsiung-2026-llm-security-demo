@@ -1,0 +1,16 @@
+⚠ 合成測資，用於示範判定邏輯，非實測結果
+
+no_assertions
+naive | strict
+PASS 25/25 (naive: success field only) | HARNESS INVALID: case-01: no assertion executed; case-02: no assertion executed; case-03: no assertion executed; ... (26 errors)
+exit codes: naive=0; strict=1
+
+graded_full_output
+naive | strict
+PASS 25/25 (naive: success field only) | HARNESS INVALID: case-01: grading source must be recorded answer, not full output; case-02: grading source must be recorded answer, not full output; case-03: grading source must be recorded answer, not full output; ... (25 errors)
+exit codes: naive=0; strict=1
+
+healthy
+naive | strict
+PASS 25/25 (naive: success field only) | HARNESS VALID: assertions executed, answer graded, known leak control detected
+exit codes: naive=0; strict=0

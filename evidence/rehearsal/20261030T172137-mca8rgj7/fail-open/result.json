@@ -1,0 +1,22 @@
+{
+  "scene": "fail-open",
+  "requested_mode": "auto",
+  "selected_mode": "live",
+  "started_at": "2026-10-30T17:23:04.039761+08:00",
+  "live_attempted": true,
+  "live_passed": true,
+  "replay_shown": false,
+  "presentation_ready": true,
+  "reason": "live_passed",
+  "returncode": 0,
+  "assertions": {
+    "verified_comparison": true
+  },
+  "command": [
+    "/Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python",
+    "tech-demo/b_fail_open/run_compare.py",
+    "--out-dir",
+    "/Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/evidence/rehearsal/20261030T172137-mca8rgj7/fail-open/artifacts"
+  ],
+  "wall_seconds": 12.558320209000158
+}

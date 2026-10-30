@@ -1,0 +1,14 @@
+{
+  "scene": "s2-attack",
+  "requested_mode": "auto",
+  "selected_mode": "replay",
+  "started_at": "2026-10-30T17:23:18.059868+08:00",
+  "live_attempted": false,
+  "live_passed": null,
+  "replay_shown": true,
+  "presentation_ready": true,
+  "reason": "planned_replay",
+  "returncode": null,
+  "assertions": {},
+  "wall_seconds": 0.0016784159997769166
+}

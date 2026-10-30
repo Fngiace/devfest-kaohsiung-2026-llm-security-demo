@@ -1,0 +1,14 @@
+[
+  {
+    "case": "offline-replay",
+    "passed": true,
+    "exit_code": 0,
+    "results": "evidence/rehearsal/20261030T172408-p44no5gn/results.json"
+  },
+  {
+    "case": "timeout-fallback",
+    "passed": true,
+    "exit_code": 2,
+    "results": "evidence/rehearsal/20261030T172408-uqizllo0/results.json"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": {
+    "environment_matches_lock": true,
+    "protected_source_integrity": true,
+    "historical_evidence_unchanged": true,
+    "eleven_scenes_complete": true,
+    "nine_live_passes": true,
+    "two_planned_replays": true,
+    "all_requested_live_scenes_passed": true,
+    "tests_57_passed": true,
+    "tests_within_three_seconds": true,
+    "audit_append_only": true,
+    "integration_checks_passed": true
+  },
+  "rehearsal_results": "evidence/rehearsal/20261030T172137-mca8rgj7/results.json"
+}

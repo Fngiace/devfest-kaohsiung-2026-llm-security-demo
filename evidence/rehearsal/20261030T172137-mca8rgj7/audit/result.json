@@ -1,0 +1,20 @@
+{
+  "scene": "audit",
+  "requested_mode": "auto",
+  "selected_mode": "live",
+  "started_at": "2026-10-30T17:23:47.073746+08:00",
+  "live_attempted": true,
+  "live_passed": true,
+  "replay_shown": false,
+  "presentation_ready": true,
+  "reason": "live_passed",
+  "returncode": 0,
+  "assertions": {
+    "output_present": true
+  },
+  "command": [
+    "/Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python",
+    "scripts/audit_tail.py"
+  ],
+  "wall_seconds": 0.05835729099999298
+}

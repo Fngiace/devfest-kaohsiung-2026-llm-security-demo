@@ -1,0 +1,25 @@
+{
+  "scene": "raw-api",
+  "requested_mode": "auto",
+  "selected_mode": "live",
+  "started_at": "2026-10-30T17:22:03.807826+08:00",
+  "live_attempted": true,
+  "live_passed": true,
+  "replay_shown": false,
+  "presentation_ready": true,
+  "reason": "live_passed",
+  "returncode": 0,
+  "assertions": {
+    "three_settings": true,
+    "http_ok": true,
+    "native_thinking_leak_observed": true,
+    "think_false_no_native_field": true
+  },
+  "command": [
+    "/Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python",
+    "tech-demo/a_raw_api/probe_raw.py",
+    "--out-dir",
+    "/Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/evidence/rehearsal/20261030T172137-mca8rgj7/raw-api/artifacts"
+  ],
+  "wall_seconds": 60.230161583000154
+}

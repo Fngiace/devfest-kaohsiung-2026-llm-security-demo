@@ -1,0 +1,9 @@
+{
+  "reason": "Intentional stage runner source change; machine, model and Python unchanged",
+  "runtime_differences": {
+    "machine": [],
+    "ollama": [],
+    "python": []
+  },
+  "source_commit": "3ab5bd778f322fc0430814e51c6615948a5eda0a"
+}

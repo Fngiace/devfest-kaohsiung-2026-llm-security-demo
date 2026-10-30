@@ -1,0 +1,22 @@
+{
+  "scene": "tests",
+  "requested_mode": "auto",
+  "selected_mode": "live",
+  "started_at": "2026-10-30T17:24:08.150437+08:00",
+  "live_attempted": true,
+  "live_passed": false,
+  "replay_shown": true,
+  "presentation_ready": true,
+  "reason": "live_failed_or_not_reproduced",
+  "returncode": 124,
+  "assertions": {
+    "output_present": true
+  },
+  "command": [
+    "/Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python",
+    "-m",
+    "pytest",
+    "-v"
+  ],
+  "wall_seconds": 0.054483457999594975
+}

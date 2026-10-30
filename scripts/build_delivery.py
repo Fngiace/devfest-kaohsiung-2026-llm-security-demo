@@ -64,7 +64,7 @@ def main():
         segment = match.group(1) if match else f"本次回應沒有閉合的 <{part}> 段。\n原始 content:\n{content}"
         if part == "thinking" and message.get("thinking"):
             segment += "\n另外的 message.thinking（runtime 原生欄位）:\n" + message["thinking"]
-        (screenshots / f"s07-{part}.txt").write_text(header + f"same_response_source={chosen['raw_responses']} (last call)\n" + segment)
+        (screenshots / f"s07-{part}.txt").write_text(header + f"same_response_source={chosen['raw_responses']} (last call); passed={chosen['passed']}\n" + segment)
     for target, source in {"m3-raw-json": "a-raw-json.txt", "m4-compare": "b-compare.txt", "m5-pytest": "c-pytest.txt", "m6-harness": "d-harness.txt"}.items():
         (screenshots / f"{target}.txt").write_text((fallback / source).read_text())
     (screenshots / "README.md").write_text("# 終端截圖文字素材\n\n提供 SDD 允許的十份實測純文字替代素材，尚未產出終端視窗 PNG。請在本機終端使用深色底與至少 20pt 字體，`cat screenshots/<name>.txt` 後手動截圖。\n\n每份包含來源與模型 digest；s07 兩份來自同一次模型回應。若標記未通過或沒有對應標籤，請勿裁掉狀態而當作成功畫面。M6 一律保留合成測資警語。\n")

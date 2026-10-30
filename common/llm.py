@@ -1,8 +1,31 @@
 from __future__ import annotations
 
 import argparse
+import json
+import os
 import time
 from dataclasses import dataclass
+from pathlib import Path
+
+
+def _client():
+    import ollama
+    return ollama.Client(host="http://localhost:11434", trust_env=False, timeout=900)
+
+
+def _record(response, elapsed, *, content=None, thinking=None):
+    target = os.environ.get("DEVFEST_TRACE")
+    if not target:
+        return
+    data = response.model_dump(mode="json") if hasattr(response, "model_dump") else dict(response)
+    if content is not None:
+        data.setdefault("message", {})["content"] = content
+    if thinking is not None:
+        data.setdefault("message", {})["thinking"] = thinking
+    path = Path(target)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps({"elapsed_seconds": elapsed, "response": data}, ensure_ascii=False) + "\n")
 
 
 MODEL = "gemma4:e4b"
@@ -37,7 +60,7 @@ def call_ollama(
 
     first_user_turn = f"{app_prompt.strip()}\n\nUSER REQUEST:\n{user_prompt.strip()}"
     started = time.perf_counter()
-    response = ollama.chat(
+    response = _client().chat(
         model=MODEL,
         messages=[{"role": "user", "content": first_user_turn}],
         options={
@@ -47,6 +70,7 @@ def call_ollama(
         },
     )
     elapsed = time.perf_counter() - started
+    _record(response, elapsed)
     eval_duration_ns = response.get("eval_duration")
     return LLMResult(
         text=response["message"]["content"],
@@ -71,8 +95,9 @@ def call_ollama_streaming(
     first_user_turn = f"{app_prompt.strip()}\n\nUSER REQUEST:\n{user_prompt.strip()}"
     started = time.perf_counter()
     parts: list[str] = []
+    thinking_parts: list[str] = []
     final_chunk = None
-    for chunk in ollama.chat(
+    for chunk in _client().chat(
         model=MODEL,
         messages=[{"role": "user", "content": first_user_turn}],
         options={
@@ -84,11 +109,14 @@ def call_ollama_streaming(
     ):
         final_chunk = chunk
         content = chunk.get("message", {}).get("content", "")
+        thinking_parts.append(chunk.get("message", {}).get("thinking", "") or "")
         if content:
             print(content, end="", flush=True)
             parts.append(content)
 
     elapsed = time.perf_counter() - started
+    if final_chunk is not None:
+        _record(final_chunk, elapsed, content="".join(parts), thinking="".join(thinking_parts))
     print(flush=True)
     eval_duration_ns = final_chunk.get("eval_duration") if final_chunk else None
     return LLMResult(

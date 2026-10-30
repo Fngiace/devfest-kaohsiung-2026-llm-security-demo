@@ -1,0 +1,146 @@
+{
+  "baseline": "d713626",
+  "checks": [
+    {
+      "path": "fallback-logs/scenario1-attack.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "fallback-logs/scenario1-defended.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "fallback-logs/scenario1-zh-attack.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "fallback-logs/scenario1-zh-defended.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "fallback-logs/scenario2-attack.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "fallback-logs/scenario2-defended.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "fallback-logs/scenario3-attack.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "fallback-logs/scenario3-defended.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "requirements.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "scenario1-systemprompt/app_prompt.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "scenario1-systemprompt/app_prompt.zh-TW.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "scenario1-systemprompt/assert_check.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario1-systemprompt/assert_check_zh.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario1-systemprompt/attack.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario1-systemprompt/attack_zh.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario1-systemprompt/defended.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario1-systemprompt/defended_zh.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario2-rag/assert_check.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario2-rag/attack.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario2-rag/defended.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario2-rag/docs/00-product-faq.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "scenario2-rag/docs/01-vip-policy.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "scenario2-rag/docs/02-contaminated-note.txt",
+      "check": "exact_bytes",
+      "passed": true
+    },
+    {
+      "path": "scenario3-agent-privilege/agent.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario3-agent-privilege/assert_check.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario3-agent-privilege/attack.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario3-agent-privilege/defended.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    },
+    {
+      "path": "scenario3-agent-privilege/tools.py",
+      "check": "protected_prompt_AST",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

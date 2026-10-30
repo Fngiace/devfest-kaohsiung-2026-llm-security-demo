@@ -1,19 +1,24 @@
 from __future__ import annotations
 
 import json
-import shutil
+import tempfile
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parent
-SANDBOX = ROOT / "sandbox"
+ROOT = Path(__file__).resolve().parents[1]
+SANDBOX_ROOT = ROOT / "sandbox"
+if SANDBOX_ROOT.is_symlink():
+    raise ValueError("sandbox root symlink blocked")
+SANDBOX_ROOT.mkdir(exist_ok=True)
+SANDBOX = Path(tempfile.mkdtemp(prefix="run-", dir=SANDBOX_ROOT))
 CUSTOMER_DB = SANDBOX / "customer_db.json"
 
 
 def reset_sandbox() -> None:
-    if SANDBOX.exists():
-        shutil.rmtree(SANDBOX)
-    SANDBOX.mkdir()
+    if SANDBOX.is_symlink() or SANDBOX.resolve().parent != SANDBOX_ROOT.resolve():
+        raise ValueError("sandbox path escape blocked")
+    if CUSTOMER_DB.is_symlink():
+        raise ValueError("customer DB symlink blocked")
     CUSTOMER_DB.write_text(
         json.dumps(
             [

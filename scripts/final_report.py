@@ -29,7 +29,10 @@ def main():
     regression_ok = len(regression) == 24 and all(r["passed"] for r in regression)
     m4_ok = config["num_predict"] is not None and len(comparison) == 5 and all(r["verified_comparison"] for r in comparison)
     m7 = [r for r in regression if r["case"] == "s3-defended"]
-    lines = ["# DevFest 高雄 2026 執行報告", "", "此報告由已保存的本機實測與測試紀錄產生，失敗樣本完整保留。", "",
+    initial_defenses = [r for r in initial if "defended" in r["case"]]
+    regression_defenses = [r for r in regression if "defended" in r["case"]]
+    lines = ["# DevFest 高雄 2026 執行報告", "", "此報告由已保存的本機實測與測試紀錄產生，失敗樣本完整保留。",
+             f"初始實測 {counts(initial)}、修改後回歸 {counts(regression)}；防禦案例分別為 {counts(initial_defenses)}、{counts(regression_defenses)}。未通過項目與逐次證據列於下方，攻擊未重現不等同防禦失效。", "",
              "## 1. 環境摘要", "", f"- 擷取：{lock['captured_at']}",
              f"- 硬體：{lock['machine']['chip']} / {lock['machine']['ram_gb']} GiB；macOS {lock['machine']['macos']} ({lock['machine']['build']})。",
              f"- Ollama：{lock['ollama']['version']}；模型 `{lock['ollama']['model']}`；{lock['ollama']['parameter_size']} / {lock['ollama']['quantization']}。",
@@ -42,8 +45,8 @@ def main():
              f"| M1 | {'完成' if m1_ok else '部分完成：已執行，未全數通過'}，{counts(initial)} | evidence/m1/results.json 及逐次原始回應 |",
              "| M2 | 完成；與 M1 共用量測樣本 | timing-m2.md |",
              "| M3 | 完成三設定探測，含實際 HTTP 錯誤（若有） | tech-demo/a_raw_api/out/ |",
-             f"| M4 | {'完成，找到候選集合內可重現 N' if m4_ok else '實驗完成，未證明符合五次一致的洩漏重現'} | tech-demo/b_fail_open/config.json、out/、evidence/m4/ |",
-             f"| M5 | {'完成' if regression_ok and tests['returncode'] == 0 and tests['wall_seconds'] < 3 else '部分完成：掃描測試與回歸狀態須分別看'}；pytest={tests['returncode']}，回歸 {counts(regression)} | evidence/m5/、evidence/m5-regression/ |",
+             f"| M4 | {'完成，找到候選集合內可重現 N' if m4_ok else '實驗完成，未證明符合五次一致的洩漏重現'} | tech-demo/b_fail_open/config.json、tech-demo/b_fail_open/out/extended/、evidence/m4-extended/ |",
+             f"| M5 | {'完成' if regression_ok and tests['returncode'] == 0 and tests['wall_seconds'] < 3 else '部分完成：掃描測試與回歸狀態須分別看'}；pytest 退出碼={tests['returncode']}，回歸 {counts(regression)} | evidence/m5/、evidence/m5-regression/ |",
              "| M6 | 完成：naive 三份通過；strict 兩壞一好；警語檢查通過 | evidence/m6/ |",
              f"| M7 | {'完成' if all(r['passed'] for r in m7) and len(m7) == 3 else '部分完成：政策測試已過，模型端呼叫／拒絕證據不足'}；場景三 defended {counts(m7)} | policy.yaml、audit/actions.jsonl、evidence/m5-regression/ |",
              "| M8 | 完成文字版交付；PNG 須手動截圖 | fallback-logs/devfest-kh/、screenshots/、RUNSHEET-devfest-kh.md |", "",
@@ -62,6 +65,7 @@ def main():
     lines += ["", f"本機原始 HTTP 探測{'有' if native else '未'}觀察到 message.thinking 欄位；是否含 canary 以表格逐設定結果為準。",
               "應用程式自行要求的 <thinking> 協議和 runtime 的 message.thinking 是不同的輸出位置，不能混為一談。",
               f"這三個無害訂單查詢回應{'已觀察到 canary，因此整個 message 被記錄或回傳時會一併帶出命中的機密' if leaked else '未觀察到 canary；因此不能宣稱這組無害查詢已造成機密外洩，也不能據此保證其他輸入安全'}。",
+              "think=false 的結果只代表這次探測；不能據此保證其他輸入安全或移除 output rail。",
               "原始 request、完整 response 與 HTTP 狀態已保存；不把請求裡原本含有的 canary 誤算為回應洩漏。", "",
               "## 5. M4 截斷預算與五次比較", "",
               f"候選集合 `{config['candidate_grid']}`；最小值範圍是這個集合，不代表所有正整數的全域最小值。選定 N：`{config['num_predict']}`。",

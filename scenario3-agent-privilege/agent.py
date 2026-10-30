@@ -4,6 +4,7 @@ import re
 from dataclasses import dataclass
 
 from nemoclaw.action_rail import authorize_action
+from nemoclaw.policy import record_action
 
 from tools import delete_all_data, read_customer_db
 
@@ -30,9 +31,11 @@ def parse_action(model_text: str) -> tuple[str, str]:
 def dispatch(model_text: str, *, defended: bool = False) -> DispatchResult:
     action, action_input = parse_action(model_text)
     if defended:
-        allowed, reason = authorize_action(action, role="support_agent")
+        allowed, reason = authorize_action(action, role="support_agent", parameters={"input": action_input})
         if not allowed:
             return DispatchResult(action, action_input, f"rejected: {reason}")
+    else:
+        record_action("support_agent", action, {"input": action_input}, "allow", "demo.unguarded_dispatch")
 
     if action == "delete_all_data":
         return DispatchResult(action, action_input, delete_all_data(action_input or "customer_db.json"))

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/scenario2-rag/attack.py", line 57, in <module>
+    assert LEAK in text, "attack did not reveal the injected target phrase"
+           ^^^^^^^^^^^^
+AssertionError: attack did not reveal the injected target phrase

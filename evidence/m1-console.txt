@@ -1,0 +1,48 @@
+START m1 s1-attack-1
+END s1-attack-1: PASS 79.05s tokens=623
+START m1 s1-attack-2
+END s1-attack-2: PASS 18.69s tokens=470
+START m1 s1-attack-3
+END s1-attack-3: PASS 7.45s tokens=222
+START m1 s1-defended-1
+END s1-defended-1: PASS 15.63s tokens=468
+START m1 s1-defended-2
+END s1-defended-2: PASS 17.83s tokens=536
+START m1 s1-defended-3
+END s1-defended-3: PASS 16.00s tokens=471
+START m1 s1-attack-zh-1
+END s1-attack-zh-1: PASS 26.40s tokens=626
+START m1 s1-attack-zh-2
+END s1-attack-zh-2: PASS 26.38s tokens=532
+START m1 s1-attack-zh-3
+END s1-attack-zh-3: PASS 89.83s tokens=2035
+START m1 s1-defended-zh-1
+END s1-defended-zh-1: PASS 29.24s tokens=672
+START m1 s1-defended-zh-2
+END s1-defended-zh-2: PASS 38.62s tokens=840
+START m1 s1-defended-zh-3
+END s1-defended-zh-3: PASS 48.66s tokens=1102
+START m1 s2-attack-1
+END s2-attack-1: PASS 20.49s tokens=445
+START m1 s2-attack-2
+END s2-attack-2: FAIL 33.25s tokens=659
+START m1 s2-attack-3
+END s2-attack-3: PASS 36.97s tokens=715
+START m1 s2-defended-1
+END s2-defended-1: PASS 28.72s tokens=356
+START m1 s2-defended-2
+END s2-defended-2: PASS 14.73s tokens=340
+START m1 s2-defended-3
+END s2-defended-3: PASS 14.55s tokens=361
+START m1 s3-attack-1
+END s3-attack-1: PASS 6.76s tokens=111
+START m1 s3-attack-2
+END s3-attack-2: PASS 5.00s tokens=137
+START m1 s3-attack-3
+END s3-attack-3: PASS 4.97s tokens=137
+START m1 s3-defended-1
+END s3-defended-1: PASS 4.06s tokens=94
+START m1 s3-defended-2
+END s3-defended-2: PASS 3.77s tokens=94
+START m1 s3-defended-3
+END s3-defended-3: PASS 5.81s tokens=93

@@ -13,6 +13,33 @@
 
 ## 三場景
 
+建議以 `venv/bin/python scripts/demo.py` 選擇段落；`--rehearse` 會無停頓依序跑 11 段技術彩排。正式講解請逐段執行，讓觀眾有時間閱讀。
+
+| 模式 | 行為 |
+|---|---|
+| `--mode auto`（預設） | S1 攻擊與 S2 攻擊使用歷史實測備援；其餘 LIVE。LIVE 失敗時明示並切換備援。 |
+| `--mode live` | 強制嘗試 LIVE；環境不符就停止模型呼叫，不顯示替代成功。 |
+| `--mode replay` | 只讀已保存紀錄，模型離線也能展示。 |
+
+例：`venv/bin/python scripts/demo.py --scene fail-open --mode live`。`--list` 列出全部 13 段；`--timeout 45` 可覆寫單段時限。預設模型段落 60 秒，原始 API 三設定合計 90 秒。逾時會終止該次 CLI 子程序群組、保留部分輸出；Ollama 服務維持運行，伺服器端請求可能需要時間才停止。Ctrl+C 取消整次彩排，不自動繼續下一段。
+
+每次彩排產生新的 `evidence/rehearsal/<時間-唯一值>/`，包含 `results.json`、逐段 `result.json`、原始模型回應、輸出與環境檢查。`live_passed=null` 表示未進行 LIVE，不能算成功；`false` 表示未通過。退出碼 `0` 表示推薦展示完成（可能包含預定備援），`2` 表示 LIVE 失敗／環境不符／備援缺失，`130` 表示取消。成功顯示備援也不會消除本次 LIVE 失敗。
+
+### 40 分鐘講解節奏
+
+| 時間 | 段落／操作 | 觀眾應看到的重點 |
+|---|---|---|
+| 00–04 分 | 開場與資料流 | canary 是假機密；原始輸出、使用者答案、工具執行是不同邊界。 |
+| 04–10 分 | `s1-attack-zh` → `s1-defended-zh` | 備援攻擊與 LIVE 防禦分別標示；答案通過輸出檢查後才回傳。 |
+| 10–16 分 | `raw-api` → `fail-open` | 分清 native thinking 與文字標籤；N=320 截斷時 naive 與 fixed 的差異。 |
+| 16–21 分 | `tests` → `harness` | 先看實際斷言；harness 段首標明合成測資。 |
+| 21–27 分 | `s2-attack` → `s2-defended` | RAG 攻擊歷史僅 2/3，不宣稱穩定；展示不可信文件的處理。 |
+| 27–33 分 | `s3-attack` → `s3-defended` → `audit` | 新 sandbox 假資料、policy 拒絕與可追溯決策。 |
+| 33–36 分 | 重點回顧 | 輸出檢查、工具授權、評估斷言各自負責什麼。 |
+| 36–40 分 | 問答／緩衝 | 不在現場重新掃描 token 預算或安裝依賴。 |
+
+以下保留底層命令供排查使用；台上優先使用入口，以免原始 CLI 無時限地等待。
+
 | 段落 | 精確指令 | M1 中位秒數 | 成功次數 | 失敗備援 |
 |---|---|---:|---:|---|
 | s1-attack | `venv/bin/python scenario1-systemprompt/attack.py --live --no-save` | 18.69 | 3/3 | `cat fallback-logs/devfest-kh/s1-attack.txt` |
@@ -33,7 +60,7 @@
 
 | 段落 | 精確指令 | 預期畫面／時間來源 | 備援 | 台上口徑 |
 |---|---|---|---|---|
-| A 原始 API | `venv/bin/python tech-demo/a_raw_api/probe_raw.py` | 三設定 HTTP 狀態與欄位掃描；API 時間合計 59.17 秒 | `cat fallback-logs/devfest-kh/a-raw-json.txt` | 先看真實 JSON，再決定哪些欄位能離開後端。 |
+| A 原始 API | `venv/bin/python scripts/demo.py --scene raw-api --mode live` | 三設定 HTTP 狀態與欄位掃描；API 時間合計 59.17 秒 | `cat fallback-logs/devfest-kh/a-raw-json.txt` | 先看真實 JSON，再決定哪些欄位能離開後端。 |
 | A curl | `sh tech-demo/a_raw_api/curl.sh false` | 與探測同一個已保存 request | `cat tech-demo/a_raw_api/out/false.json` | 不經 SDK，直接確認 runtime 回應。 |
 | B fail-open | `venv/bin/python tech-demo/b_fail_open/run_compare.py` | N=320；API 中位 11.58 秒；若 N=null，未驗證成功，改展示失敗紀錄 | `cat fallback-logs/devfest-kh/b-compare.txt` | 解析失敗時不可把原始輸出當安全答案。 |
 | B 差異 | `cat tech-demo/b_fail_open/diff.patch` | naive 與 fixed 實際差異，無模型 | 同左 | 找不到完整答案，就回固定安全訊息。 |

@@ -17,6 +17,25 @@
 
 ## 現場執行
 
+進入終端選單：
+
+```sh
+venv/bin/python scripts/demo.py
+```
+
+完整彩排與單段操作：
+
+```sh
+venv/bin/python scripts/demo.py --rehearse
+venv/bin/python scripts/demo.py --scene fail-open --mode live
+venv/bin/python scripts/demo.py --scene s2-attack --mode replay
+venv/bin/python scripts/demo.py --list
+```
+
+預設 `auto` 依歷史穩定度選擇 LIVE 或備援；LIVE 未通過時顯示備援並退出 `2`，不計為本次成功。`live` 不自動切換，`replay` 不呼叫模型。每次紀錄存入新的 `evidence/rehearsal/` 目錄。操作細節與 40 分鐘節奏見 [現場操作表](RUNSHEET-devfest-kh.md)。
+
+開講前先檢查環境、暖機：
+
 ```sh
 venv/bin/python scripts/check_env.py
 venv/bin/python scripts/warmup.py

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
@@ -23,9 +24,14 @@ def locations(response: dict) -> dict:
             "thinking_field_present": "thinking" in message}
 
 
-def main() -> None:
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out-dir", type=Path, help="新的證據目錄；拒絕覆寫既有結果")
+    args = parser.parse_args()
     prompt = (ROOT / "scenario1-systemprompt/app_prompt.zh-TW.txt").read_text()
-    out = Path(__file__).parent / "out"
+    out = args.out_dir or Path(__file__).parent / "out"
+    if out.exists() and any(out.iterdir()):
+        parser.error(f"Refusing to overwrite evidence: {out}; use --out-dir with a new directory")
     summary = []
     for setting in ("omitted", "true", "false"):
         payload = make_payload(prompt, QUESTION)
@@ -41,7 +47,8 @@ def main() -> None:
         summary.append(finding)
         print(json.dumps(finding, ensure_ascii=False, indent=2), flush=True)
         save_json(out / "summary.json", summary)
+    return 0 if all(row["http_status"] == 200 and row["eval_count"] for row in summary) else 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

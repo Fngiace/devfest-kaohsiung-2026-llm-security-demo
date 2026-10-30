@@ -19,10 +19,15 @@ from fixed_app import render as fixed
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repeat", type=int, default=1)
+    parser.add_argument("--out-dir", type=Path, help="將本次比較存到新的證據目錄")
     args = parser.parse_args()
+    if args.repeat < 1:
+        parser.error("--repeat must be positive")
     here = Path(__file__).parent
     config = json.loads((here / "config.json").read_text())
-    out = here / config.get("evidence_directory", "out")
+    out = args.out_dir or here / config.get("evidence_directory", "out")
+    if args.out_dir and out.exists() and any(out.iterdir()):
+        parser.error(f"Refusing to overwrite evidence: {out}")
     n = config["num_predict"]
     verified = n is not None
     if not verified:

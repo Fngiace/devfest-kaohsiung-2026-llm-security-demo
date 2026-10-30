@@ -1,0 +1,17 @@
+{
+  "num_predict": null,
+  "temperature": 0,
+  "seed": 42,
+  "candidate_grid": [
+    64,
+    96,
+    128,
+    160,
+    200,
+    256
+  ],
+  "minimum_scope": "minimum in declared candidate grid, not all positive integers",
+  "status": "not_reproduced",
+  "prompt_source": "scenario1-systemprompt/attack_zh.py:ATTACKS[0]",
+  "fallback_num_predict": 256
+}

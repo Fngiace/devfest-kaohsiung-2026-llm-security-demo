@@ -77,6 +77,7 @@ def main():
 
 
 def write_runsheet(rows, lock):
+    harness_seconds = load("evidence/m6/timing.json")["wall_seconds"]
     lines = ["# DevFest 2026 高雄現場操作表", "", "所有命令從專案根目錄執行。所有推論僅呼叫 localhost:11434。",
              "先閱讀 REPORT.md 的失敗／未重現項目；備援是實測文字紀錄，不是影片。", "",
              "## 開講前 10 分鐘", "", "1. 接電源；關閉大型程式，確認剩餘記憶體。",
@@ -98,7 +99,7 @@ def write_runsheet(rows, lock):
               "| B fail-open | `venv/bin/python tech-demo/b_fail_open/run_compare.py` | 若 config.num_predict=null，此段未驗證成功，改展示失敗紀錄；時間見 evidence/m4 | `cat fallback-logs/devfest-kh/b-compare.txt` | 解析失敗時不可把原始輸出當安全答案。 |",
               "| B 差異 | `cat tech-demo/b_fail_open/diff.patch` | naive 與 fixed 實際差異，無模型 | 同左 | 找不到完整答案，就回固定安全訊息。 |",
               "| C 單元測試 | `venv/bin/python -m pytest -v` | 確定性本機測試，計時見 evidence/m5/test-timing.json | `cat fallback-logs/devfest-kh/c-pytest.txt` | 正規化能補幾種包裝，但不能承諾語意防漏。 |",
-              "| D harness | `sh tech-demo/d_harness/run_d.sh` | naive 全過；strict 兩壞一好；首行合成測資警語，通常小於 1 秒（實測見 evidence/m6） | `cat fallback-logs/devfest-kh/d-harness.txt` | 先驗證斷言真的執行，再相信通過率。 |",
+              f"| D harness | `sh tech-demo/d_harness/run_d.sh` | naive 全過；strict 兩壞一好；首行合成測資警語，實測 {harness_seconds:.3f} 秒 | `cat fallback-logs/devfest-kh/d-harness.txt` | 先驗證斷言真的執行，再相信通過率。 |",
               "| 稽核 | `venv/bin/python scripts/audit_tail.py` | 最後三筆 JSON 決策，無模型 | `tail -n 3 fallback-logs/devfest-kh/s3-audit.jsonl` | 每次允許、拒絕、待確認都有規則與參數紀錄。 |", "",
               "有 jq 時可用 `tail -n 3 audit/actions.jsonl | jq .`。JSONL 不能整份直接交給 `python -m json.tool`；單筆替代：`tail -n 1 audit/actions.jsonl | venv/bin/python -m json.tool`。", "",
               "M6 備援檔首行依 SDD 放時間/digest 註解，第二行保留合成測資警語；live 程式第一行即為警語。",

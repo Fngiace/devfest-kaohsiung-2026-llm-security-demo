@@ -1,0 +1,7 @@
+Attempted tool: mcp__cua_repl.js
+Call: await cua.getApp("Terminal")
+Actual tool response:
+Computer Use is not allowed to use the app 'com.apple.Terminal' for safety reasons.
+
+Following SDD M8, deliver the ten corresponding text outputs for manual terminal screenshots.
+No alternative UI automation was used to bypass this restriction.

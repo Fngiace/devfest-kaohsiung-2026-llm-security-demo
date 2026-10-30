@@ -48,7 +48,7 @@ def main():
              f"| M7 | {'完成' if all(r['passed'] for r in m7) and len(m7) == 3 else '部分完成：政策測試已過，模型端呼叫／拒絕證據不足'}；場景三 defended {counts(m7)} | policy.yaml、audit/actions.jsonl、evidence/m5-regression/ |",
              "| M8 | 完成文字版交付；PNG 須手動截圖 | fallback-logs/devfest-kh/、screenshots/、RUNSHEET-devfest-kh.md |", "",
              f"完整性檢查：{integrity['passed']}。原始攻擊、system/app prompt、canary、requirements 與 COSCUP fallback 逐項比對。", "",
-             "## 3. M2 時間表與現場建議", "", (ROOT / "timing-m2.md").read_text(), "",
+             "## 3. M2 時間表與現場建議", "", (ROOT / "timing-m2.md").read_text().replace("# M2 實測時間表", "### 初始實測", 1), "",
              "### 修改後回歸", "", "| 腳本 | 成功次數 |", "|---|---:|"]
     for name in dict.fromkeys(r["case"] for r in regression):
         lines.append(f"| {name} | {counts([r for r in regression if r['case'] == name])} |")
@@ -81,7 +81,7 @@ def main():
               "- 新增 requirements-dev.txt 鎖定 pytest 與新測試相依，既有 requirements 完全不變。",
               "- policy.yaml 使用 YAML 1.2 相容的 JSON 語法，由標準庫解析，不新增 YAML 解析相依。",
               "- repo.commit 為最後修改執行程式路徑的 commit，搭配逐檔 source SHA-256。排除純證據提交，避免鎖檔與自身 commit 的循環參照。",
-              "- 未自動產出終端視窗 PNG；依 SDD 交付十份真實文字替代素材，需要手動截圖。",
+              "- Computer Use 安全限制禁止存取 com.apple.Terminal（錯誤見 evidence/m8/screenshot-capability.txt）；依 SDD 交付十份真實文字替代素材，需要手動截圖。",
               "- 推論只呼叫 localhost，下載模型、安裝套件、取得基線與 GitHub 同步是文件明許的建置網路操作。", "",
               "## 7. 待 Fngi 決定", "",
               "- 依 timing-m2.md 決定現場 LIVE 段落。失敗或超過 60 秒者，建議使用已驗證成功的文字備援；沒有成功樣本者如實展示限制或略過。",

@@ -45,7 +45,8 @@ def main():
             text += "\nSaved raw API message(s):\n" + json.dumps([t["response"].get("message") for t in traces], ensure_ascii=False, indent=2)
         (fallback / f"{name}.txt").write_text(header + text)
         selected[name] = (text, traces, chosen)
-    for target, source in {"b-compare.txt": "evidence/m4/compare.txt", "c-pytest.txt": "evidence/m5/pytest.txt",
+    compare_source = "evidence/m4-extended/compare.txt" if (ROOT / "evidence/m4-extended/compare.txt").exists() else "evidence/m4/compare.txt"
+    for target, source in {"b-compare.txt": compare_source, "c-pytest.txt": "evidence/m5/pytest.txt",
                            "d-harness.txt": "evidence/m6/harness.txt", "a-raw-json.txt": "evidence/m3/probe.txt",
                            "s3-audit.jsonl": "audit/actions.jsonl"}.items():
         (fallback / target).write_text(header + read(source))

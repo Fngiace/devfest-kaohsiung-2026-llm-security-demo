@@ -21,6 +21,7 @@ def main() -> int:
     args = parser.parse_args()
     here = Path(__file__).parent
     config = json.loads((here / "config.json").read_text())
+    out = here / config.get("evidence_directory", "out")
     n = config["num_predict"]
     verified = n is not None
     if not verified:
@@ -30,7 +31,7 @@ def main() -> int:
     stamp = datetime.now().strftime("%Y%m%dT%H%M%S%f")
     for repeat in range(1, args.repeat + 1):
         status, response = request("/api/chat", payload_for(n))
-        save_json(here / "out" / f"compare-{stamp}-{repeat}.json", response)
+        save_json(out / f"compare-{stamp}-{repeat}.json", response)
         raw = response.get("message", {}).get("content", "")
         left, right = naive(raw, CANARIES), fixed(raw, CANARIES)
         leak = any(s in left for s in CANARIES)
@@ -40,7 +41,7 @@ def main() -> int:
         print(f"naive 機密外洩={leak}; answer 閉合={closed}; fixed 安全訊息={right == SAFE_MESSAGE}", flush=True)
         results.append({"repeat": repeat, "num_predict": n, "http_status": status, "naive_leaked": leak,
                         "closed_answer": closed, "fixed_safe": right == SAFE_MESSAGE, "verified_comparison": correct})
-    save_json(here / "out" / "comparison-results.json", results)
+    save_json(out / "comparison-results.json", results)
     return 0 if verified and all(r["verified_comparison"] for r in results) else 1
 
 

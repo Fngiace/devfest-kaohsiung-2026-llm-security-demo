@@ -21,7 +21,7 @@ def main():
     regression = load("evidence/m5-regression/results.json")
     probes = load("tech-demo/a_raw_api/out/summary.json")
     config = load("tech-demo/b_fail_open/config.json")
-    comparison = load("tech-demo/b_fail_open/out/comparison-results.json")
+    comparison = load("tech-demo/b_fail_open/" + config.get("evidence_directory", "out") + "/comparison-results.json")
     tests = load("evidence/m5/test-timing.json")
     integrity = load("evidence/final-integrity.json")
     audit = [json.loads(line) for line in (ROOT / "audit/actions.jsonl").read_text().splitlines()]

@@ -16,7 +16,8 @@ sys.path.insert(0, str(ROOT))
 from common.local_api import MODEL, request, save_json
 
 SOURCE_PATHS = ["common", "nemoclaw", "scripts", "tech-demo", "tests", "scenario1-systemprompt",
-                "scenario2-rag", "scenario3-agent-privilege", "requirements.txt", "requirements-dev.txt", "policy.yaml"]
+                "scenario2-rag", "scenario3-agent-privilege", "requirements.txt", "requirements-dev.txt", "policy.yaml", "pytest.ini",
+                ":(exclude)tech-demo/**/out/**", ":(exclude)**/__pycache__/**", ":(exclude)**/sandbox/**"]
 
 
 def command(*args: str) -> str:
@@ -24,10 +25,10 @@ def command(*args: str) -> str:
 
 
 def source_manifest() -> dict:
-    names = command("git", "ls-files", "--", *SOURCE_PATHS).splitlines()
+    names = command("git", "ls-files", "--cached", "--others", "--exclude-standard", "--", *SOURCE_PATHS).splitlines()
     return {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in names
-            if not any(part in Path(name).parts for part in ("out", "fixtures"))
-            and Path(name).suffix in {".py", ".sh", ".txt", ".yaml"}}
+            if "out" not in Path(name).parts
+            and Path(name).suffix in {".py", ".sh", ".txt", ".yaml", ".json", ".ini"}}
 
 
 def snapshot() -> dict:

@@ -1,0 +1,5 @@
+{"stage": "M0 version", "started_at": "2026-10-30T16:39:46.276599+08:00", "wall_seconds": 0.07156854200002272, "returncode": 0, "command": ["ollama", "--version"], "output": "evidence/m0/ollama-version.txt"}
+{"stage": "M0 list", "started_at": "2026-10-30T16:39:46.348717+08:00", "wall_seconds": 0.06442870800037781, "returncode": 0, "command": ["ollama", "list"], "output": "evidence/m0/ollama-list.txt"}
+{"stage": "M0 show", "started_at": "2026-10-30T16:39:46.413466+08:00", "wall_seconds": 0.5410372920005102, "returncode": 0, "command": ["ollama", "show", "gemma4:e4b"], "output": "evidence/m0/ollama-show.txt"}
+{"stage": "M0 capture", "started_at": "2026-10-30T16:39:46.955341+08:00", "wall_seconds": 0.3555472500001997, "returncode": 0, "command": ["/Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python", "scripts/check_env.py", "--capture"], "output": "evidence/m0/capture.txt"}
+{"stage": "M0 check", "started_at": "2026-10-30T16:39:47.311454+08:00", "wall_seconds": 0.2570370419998653, "returncode": 0, "command": ["/Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python", "scripts/check_env.py"], "output": "evidence/m0/check.txt"}

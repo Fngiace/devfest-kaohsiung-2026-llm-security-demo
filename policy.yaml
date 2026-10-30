@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "default": "deny",
+  "roles": {
+    "support_agent": {
+      "allow": ["read_customer_db", "lookup_order", "check_refund_status"],
+      "deny_patterns": ["delete_*", "drop_*"],
+      "require_human_confirm": ["issue_refund"]
+    },
+    "customer_service_agent": {
+      "allow": ["lookup_order", "check_refund_status"],
+      "deny_patterns": ["delete_*", "drop_*"],
+      "require_human_confirm": ["issue_refund"]
+    },
+    "maintenance_admin": {
+      "allow": ["read_customer_db"],
+      "deny_patterns": [],
+      "require_human_confirm": ["delete_all_data"],
+      "confirmation_token": "ALLOW-DEMO-DELETE"
+    }
+  }
+}

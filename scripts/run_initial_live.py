@@ -33,10 +33,12 @@ def checkpoint(stage, summary, *paths):
 
 
 def main():
+    run("M0 version", ["ollama", "--version"], "evidence/m0/ollama-version.txt")
     run("M0 list", ["ollama", "list"], "evidence/m0/ollama-list.txt")
     run("M0 show", ["ollama", "show", "gemma4:e4b"], "evidence/m0/ollama-show.txt")
     if run("M0 capture", [PYTHON, "scripts/check_env.py", "--capture"], "evidence/m0/capture.txt"):
         raise RuntimeError("Cannot record environment; inspect evidence/m0/capture.txt")
+    (ROOT / "evidence/m0/env-lock.json").write_bytes((ROOT / "env-lock.json").read_bytes())
     run("M0 check", [PYTHON, "scripts/check_env.py"], "evidence/m0/check.txt")
     checkpoint("M0", "lock verified local model and runtime", "env-lock.json", "evidence/m0", "evidence/live-stage-status.jsonl")
     run("M1", [PYTHON, "scripts/run_matrix.py", "--phase", "m1", "--repeats", "3"], "evidence/m1-console.txt")

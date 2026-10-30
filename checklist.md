@@ -1,0 +1,3 @@
+- [x] Scenario 1: output rail blocks system prompt and fake secret leakage.
+- [x] Scenario 2: retrieval rail isolates indirect prompt injection from untrusted docs.
+- [x] Scenario 3: action rail rejects unauthorized destructive tool calls and preserves sandbox data.

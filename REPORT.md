@@ -5,7 +5,7 @@
 ## 環境摘要
 
 - 本機：Apple M2，16 GiB，macOS 27.0.1（26A434）。
-- Ollama server：0.40.6；指定模型 `gemma4:e4b` 正在下載。
+- Ollama server：0.40.6；指定模型 `gemma4:e4b` 已成功下載（8.1B / nvfp4，完整 digest 見 env-lock.json）。
 - Python：3.14.6，`venv/`；基線 `requirements.txt` 原版本安裝成功。
 - GitHub：`Fngiace/devfest-kaohsiung-2026-llm-security-demo`，分支 `devfest-kh-2026`。
 - COSCUP 基線：`d713626`（包含指定的 `d6149b9`），保留完整上游歷史後匯入新專案。
@@ -14,9 +14,9 @@
 
 | 階段 | 狀態 | 證據 |
 |---|---|---|
-| M0 | 進行中，等待模型下載完成後鎖定 | `scripts/check_env.py`、`evidence/setup/` |
-| M1 | 待模型下載，已準備實跑驗證器 | `scripts/run_matrix.py` |
-| M2 | 待 M1 量測 | — |
+| M0 | 完成，check_env.py 退出碼 0 | `scripts/check_env.py`、`evidence/setup/` |
+| M1 | 正在執行 24 次本機實測 | `scripts/run_matrix.py` |
+| M2 | 隨 M1 保存逐次量測 | — |
 | M3 | 程式已準備，尚未實測 | `tech-demo/a_raw_api/` |
 | M4 | 程式已準備，尚未實測 | `tech-demo/b_fail_open/` |
 | M5 | 掃描器測試已過；尚未整合、模型回歸未執行 | `nemoclaw/secret_scan.py` |

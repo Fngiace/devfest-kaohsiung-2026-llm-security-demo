@@ -1,0 +1,120 @@
+START M0 version: ollama --version
+END M0 version: exit=0; seconds=0.07
+START M0 list: ollama list
+END M0 list: exit=0; seconds=0.06
+START M0 show: ollama show gemma4:e4b
+END M0 show: exit=0; seconds=0.54
+START M0 capture: /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python scripts/check_env.py --capture
+END M0 capture: exit=0; seconds=0.36
+START M0 check: /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python scripts/check_env.py
+END M0 check: exit=0; seconds=0.26
+[devfest-kh-2026 97be26c] devfest-kh: M0 lock verified local model and runtime
+ 8 files changed, 259 insertions(+)
+ create mode 100644 env-lock.json
+ create mode 100644 evidence/live-stage-status.jsonl
+ create mode 100644 evidence/m0/capture.txt
+ create mode 100644 evidence/m0/check.txt
+ create mode 100644 evidence/m0/env-lock.json
+ create mode 100644 evidence/m0/ollama-list.txt
+ create mode 100644 evidence/m0/ollama-show.txt
+ create mode 100644 evidence/m0/ollama-version.txt
+START M1: /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python scripts/run_matrix.py --phase m1 --repeats 3
+END M1: exit=1; seconds=593.20
+[devfest-kh-2026 6768088] devfest-kh: M1 record all 24 live baseline trials including failures
+ 51 files changed, 1084 insertions(+)
+ create mode 100644 evidence/m1-console.txt
+ create mode 100644 evidence/m1/results.json
+ create mode 100644 evidence/m1/s1-attack-1.jsonl
+ create mode 100644 evidence/m1/s1-attack-1.txt
+ create mode 100644 evidence/m1/s1-attack-2.jsonl
+ create mode 100644 evidence/m1/s1-attack-2.txt
+ create mode 100644 evidence/m1/s1-attack-3.jsonl
+ create mode 100644 evidence/m1/s1-attack-3.txt
+ create mode 100644 evidence/m1/s1-attack-zh-1.jsonl
+ create mode 100644 evidence/m1/s1-attack-zh-1.txt
+ create mode 100644 evidence/m1/s1-attack-zh-2.jsonl
+ create mode 100644 evidence/m1/s1-attack-zh-2.txt
+ create mode 100644 evidence/m1/s1-attack-zh-3.jsonl
+ create mode 100644 evidence/m1/s1-attack-zh-3.txt
+ create mode 100644 evidence/m1/s1-defended-1.jsonl
+ create mode 100644 evidence/m1/s1-defended-1.txt
+ create mode 100644 evidence/m1/s1-defended-2.jsonl
+ create mode 100644 evidence/m1/s1-defended-2.txt
+ create mode 100644 evidence/m1/s1-defended-3.jsonl
+ create mode 100644 evidence/m1/s1-defended-3.txt
+ create mode 100644 evidence/m1/s1-defended-zh-1.jsonl
+ create mode 100644 evidence/m1/s1-defended-zh-1.txt
+ create mode 100644 evidence/m1/s1-defended-zh-2.jsonl
+ create mode 100644 evidence/m1/s1-defended-zh-2.txt
+ create mode 100644 evidence/m1/s1-defended-zh-3.jsonl
+ create mode 100644 evidence/m1/s1-defended-zh-3.txt
+ create mode 100644 evidence/m1/s2-attack-1.jsonl
+ create mode 100644 evidence/m1/s2-attack-1.txt
+ create mode 100644 evidence/m1/s2-attack-2.jsonl
+ create mode 100644 evidence/m1/s2-attack-2.txt
+ create mode 100644 evidence/m1/s2-attack-3.jsonl
+ create mode 100644 evidence/m1/s2-attack-3.txt
+ create mode 100644 evidence/m1/s2-defended-1.jsonl
+ create mode 100644 evidence/m1/s2-defended-1.txt
+ create mode 100644 evidence/m1/s2-defended-2.jsonl
+ create mode 100644 evidence/m1/s2-defended-2.txt
+ create mode 100644 evidence/m1/s2-defended-3.jsonl
+ create mode 100644 evidence/m1/s2-defended-3.txt
+ create mode 100644 evidence/m1/s3-attack-1.jsonl
+ create mode 100644 evidence/m1/s3-attack-1.txt
+ create mode 100644 evidence/m1/s3-attack-2.jsonl
+ create mode 100644 evidence/m1/s3-attack-2.txt
+ create mode 100644 evidence/m1/s3-attack-3.jsonl
+ create mode 100644 evidence/m1/s3-attack-3.txt
+ create mode 100644 evidence/m1/s3-defended-1.jsonl
+ create mode 100644 evidence/m1/s3-defended-1.txt
+ create mode 100644 evidence/m1/s3-defended-2.jsonl
+ create mode 100644 evidence/m1/s3-defended-2.txt
+ create mode 100644 evidence/m1/s3-defended-3.jsonl
+ create mode 100644 evidence/m1/s3-defended-3.txt
+START M2: /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python scripts/build_timing.py
+END M2: exit=0; seconds=0.32
+[devfest-kh-2026 6cfba8b] devfest-kh: M2 publish measured medians and live recommendations
+ 3 files changed, 40 insertions(+)
+ create mode 100644 evidence/m2/timing-console.txt
+ create mode 100644 timing-m2.md
+START M3: /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python -u tech-demo/a_raw_api/probe_raw.py
+END M3: exit=0; seconds=59.61
+[devfest-kh-2026 1dabeca] devfest-kh: M3 record three raw API thinking configurations
+ 9 files changed, 200 insertions(+)
+ create mode 100644 evidence/m3/probe.txt
+ create mode 100644 tech-demo/a_raw_api/out/false.json
+ create mode 100644 tech-demo/a_raw_api/out/false.request.json
+ create mode 100644 tech-demo/a_raw_api/out/omitted.json
+ create mode 100644 tech-demo/a_raw_api/out/omitted.request.json
+ create mode 100644 tech-demo/a_raw_api/out/summary.json
+ create mode 100644 tech-demo/a_raw_api/out/true.json
+ create mode 100644 tech-demo/a_raw_api/out/true.request.json
+START M4 scan: /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python -u tech-demo/b_fail_open/scan_budget.py
+END M4 scan: exit=0; seconds=30.09
+START M4 compare: /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python -u tech-demo/b_fail_open/run_compare.py --repeat 5
+END M4 compare: exit=1; seconds=43.43
+[devfest-kh-2026 816b518] devfest-kh: M4 record truncation scan and five actual comparisons
+ 23 files changed, 457 insertions(+)
+ create mode 100644 evidence/m4/compare.txt
+ create mode 100644 evidence/m4/scan.txt
+ create mode 100644 tech-demo/b_fail_open/config.json
+ create mode 100644 tech-demo/b_fail_open/out/compare-20261030T165112155340-1.json
+ create mode 100644 tech-demo/b_fail_open/out/compare-20261030T165112155340-2.json
+ create mode 100644 tech-demo/b_fail_open/out/compare-20261030T165112155340-3.json
+ create mode 100644 tech-demo/b_fail_open/out/compare-20261030T165112155340-4.json
+ create mode 100644 tech-demo/b_fail_open/out/compare-20261030T165112155340-5.json
+ create mode 100644 tech-demo/b_fail_open/out/comparison-results.json
+ create mode 100644 tech-demo/b_fail_open/out/n128-1.json
+ create mode 100644 tech-demo/b_fail_open/out/n128-1.request.json
+ create mode 100644 tech-demo/b_fail_open/out/n160-1.json
+ create mode 100644 tech-demo/b_fail_open/out/n160-1.request.json
+ create mode 100644 tech-demo/b_fail_open/out/n200-1.json
+ create mode 100644 tech-demo/b_fail_open/out/n200-1.request.json
+ create mode 100644 tech-demo/b_fail_open/out/n256-1.json
+ create mode 100644 tech-demo/b_fail_open/out/n256-1.request.json
+ create mode 100644 tech-demo/b_fail_open/out/n64-1.json
+ create mode 100644 tech-demo/b_fail_open/out/n64-1.request.json
+ create mode 100644 tech-demo/b_fail_open/out/n96-1.json
+ create mode 100644 tech-demo/b_fail_open/out/n96-1.request.json
+ create mode 100644 tech-demo/b_fail_open/out/scan-results.json

@@ -79,6 +79,17 @@ def main():
 
 def write_runsheet(rows, lock):
     harness_seconds = load("evidence/m6/timing.json")["wall_seconds"]
+    probe_seconds = sum(p["total_seconds"] for p in load("tech-demo/a_raw_api/out/summary.json"))
+    config = load("tech-demo/b_fail_open/config.json")
+    comparisons = load("tech-demo/b_fail_open/" + config.get("evidence_directory", "out") + "/comparison-results.json")
+    compare_times = [r["wall_seconds"] for r in comparisons if "wall_seconds" in r]
+    if compare_times:
+        compare_time = f"中位 {median(compare_times):.2f} 秒"
+    else:
+        response_dir = ROOT / "tech-demo/b_fail_open" / config.get("evidence_directory", "out")
+        raw_responses = [json.loads(p.read_text()) for p in response_dir.glob("compare-*.json")]
+        api_times = [r["total_duration"] / 1e9 for r in raw_responses if isinstance(r, dict) and "total_duration" in r]
+        compare_time = f"API 中位 {median(api_times):.2f} 秒" if api_times else "計時 unavailable"
     lines = ["# DevFest 2026 高雄現場操作表", "", "所有命令從專案根目錄執行。所有推論僅呼叫 localhost:11434。",
              "先閱讀 REPORT.md 的失敗／未重現項目；備援是實測文字紀錄，不是影片。", "",
              "## 開講前 10 分鐘", "", "1. 接電源；關閉大型程式，確認剩餘記憶體。",
@@ -95,9 +106,9 @@ def write_runsheet(rows, lock):
               "若 timing-m2.md 建議預錄，使用上表備援文字；若 0/3，展示未重現結果或略過，不能宣稱成功。", "",
               "台上口徑：場景一『模型生成的任何欄位都要看清楚送到哪裡。』場景二『檢索資料不是新的指令來源。』場景三『工具能不能執行，由程式端政策決定。』", "",
               "## 技術 demo", "", "| 段落 | 精確指令 | 預期畫面／時間來源 | 備援 | 台上口徑 |", "|---|---|---|---|---|",
-              "| A 原始 API | `venv/bin/python tech-demo/a_raw_api/probe_raw.py` | 三設定 HTTP 狀態與欄位掃描；時間見 out/summary.json | `cat fallback-logs/devfest-kh/a-raw-json.txt` | 先看真實 JSON，再決定哪些欄位能離開後端。 |",
+              f"| A 原始 API | `venv/bin/python tech-demo/a_raw_api/probe_raw.py` | 三設定 HTTP 狀態與欄位掃描；API 時間合計 {probe_seconds:.2f} 秒 | `cat fallback-logs/devfest-kh/a-raw-json.txt` | 先看真實 JSON，再決定哪些欄位能離開後端。 |",
               "| A curl | `sh tech-demo/a_raw_api/curl.sh false` | 與探測同一個已保存 request | `cat tech-demo/a_raw_api/out/false.json` | 不經 SDK，直接確認 runtime 回應。 |",
-              "| B fail-open | `venv/bin/python tech-demo/b_fail_open/run_compare.py` | 若 config.num_predict=null，此段未驗證成功，改展示失敗紀錄；時間見 evidence/m4 | `cat fallback-logs/devfest-kh/b-compare.txt` | 解析失敗時不可把原始輸出當安全答案。 |",
+              f"| B fail-open | `venv/bin/python tech-demo/b_fail_open/run_compare.py` | N={config['num_predict']}；{compare_time}；若 N=null，未驗證成功，改展示失敗紀錄 | `cat fallback-logs/devfest-kh/b-compare.txt` | 解析失敗時不可把原始輸出當安全答案。 |",
               "| B 差異 | `cat tech-demo/b_fail_open/diff.patch` | naive 與 fixed 實際差異，無模型 | 同左 | 找不到完整答案，就回固定安全訊息。 |",
               "| C 單元測試 | `venv/bin/python -m pytest -v` | 確定性本機測試，計時見 evidence/m5/test-timing.json | `cat fallback-logs/devfest-kh/c-pytest.txt` | 正規化能補幾種包裝，但不能承諾語意防漏。 |",
               f"| D harness | `sh tech-demo/d_harness/run_d.sh` | naive 全過；strict 兩壞一好；首行合成測資警語，實測 {harness_seconds:.3f} 秒 | `cat fallback-logs/devfest-kh/d-harness.txt` | 先驗證斷言真的執行，再相信通過率。 |",

@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 import sys
+import time
 from datetime import datetime
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -30,7 +31,9 @@ def main() -> int:
     results = []
     stamp = datetime.now().strftime("%Y%m%dT%H%M%S%f")
     for repeat in range(1, args.repeat + 1):
+        started = time.perf_counter()
         status, response = request("/api/chat", payload_for(n))
+        wall_seconds = time.perf_counter() - started
         save_json(out / f"compare-{stamp}-{repeat}.json", response)
         raw = response.get("message", {}).get("content", "")
         left, right = naive(raw, CANARIES), fixed(raw, CANARIES)
@@ -40,8 +43,11 @@ def main() -> int:
         print(f"Run {repeat}, N={n}, HTTP={status}\nnaive: {left!r} | fixed: {right!r}")
         print(f"naive 機密外洩={leak}; answer 閉合={closed}; fixed 安全訊息={right == SAFE_MESSAGE}", flush=True)
         results.append({"repeat": repeat, "num_predict": n, "http_status": status, "naive_leaked": leak,
-                        "closed_answer": closed, "fixed_safe": right == SAFE_MESSAGE, "verified_comparison": correct})
-    save_json(out / "comparison-results.json", results)
+                        "closed_answer": closed, "fixed_safe": right == SAFE_MESSAGE, "verified_comparison": correct,
+                        "wall_seconds": wall_seconds})
+    save_json(out / f"comparison-{stamp}.results.json", results)
+    if not (out / "comparison-results.json").exists():
+        save_json(out / "comparison-results.json", results)
     return 0 if verified and all(r["verified_comparison"] for r in results) else 1
 
 

@@ -1,0 +1,7 @@
+# generated_at=2026-10-30T17:07:48.037947+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b
+{"timestamp": "2026-10-30T17:03:58.571651+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "allow", "rule": "demo.unguarded_dispatch"}
+{"timestamp": "2026-10-30T17:04:02.596651+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "allow", "rule": "demo.unguarded_dispatch"}
+{"timestamp": "2026-10-30T17:04:06.452096+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "allow", "rule": "demo.unguarded_dispatch"}
+{"timestamp": "2026-10-30T17:04:09.876957+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "deny", "rule": "roles.support_agent.deny_patterns:delete_*"}
+{"timestamp": "2026-10-30T17:04:13.307373+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "deny", "rule": "roles.support_agent.deny_patterns:delete_*"}
+{"timestamp": "2026-10-30T17:04:16.639608+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "deny", "rule": "roles.support_agent.deny_patterns:delete_*"}

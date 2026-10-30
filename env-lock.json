@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-30T16:55:59.068747+08:00",
+  "captured_at": "2026-10-30T17:07:47.703252+08:00",
   "machine": {
     "chip": "Apple M2",
     "ram_gb": 16.0,
@@ -40,7 +40,7 @@
   },
   "repo": {
     "branch": "devfest-kh-2026",
-    "commit": "3b05b7928b9214875f37a8a4af2ac5e4351580fd",
+    "commit": "88f2229e9f3e3dad10f3896465ee3260a3632b57",
     "commit_semantics": "latest commit affecting runtime source paths; evidence-only commits excluded",
     "source_sha256": {
       "common/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
@@ -77,10 +77,10 @@
       "scenario3-agent-privilege/defended.py": "1e2306a9ab0beef8363b3c8fa7119878ea97e0d0b7c4fb3646008db9e94f19cf",
       "scenario3-agent-privilege/tools.py": "838247f3cd4f502916b2523afb886b6c994e94b1a9aaeb32427f0740a43c1122",
       "scripts/audit_tail.py": "698836c2e74a7a68c863bfdd263046569c1bd53514c016d8bbd215ea2a2d5a5c",
-      "scripts/build_delivery.py": "655f0a45319ff2423d3128c8fbc8f4ee8158091f3abd8c86f2841adce157044d",
+      "scripts/build_delivery.py": "e4d9eb1f7934e6ee436c47da03e1f18f319e5a8322edd1787eb2a6d51af80f71",
       "scripts/build_timing.py": "f2e5b1e03a95adc1cb3e28147854de975452715a73eb8dc9471f3ed393c8d964",
       "scripts/check_env.py": "0c7f098cee3abaa35bdf45e45dc14cbefa500c9e3a1c56fe9e52c1893cca8e70",
-      "scripts/final_report.py": "3f8a11da6551f37d05ad0c6f455a59bb450c0562cf2bb662548d6a9bace49b42",
+      "scripts/final_report.py": "095eba204de39a9a9c8d32ff61c972d50437abea3a6a0f9d4c04dcb4057f2546",
       "scripts/run_initial_live.py": "57c4fa4477281e9e8f1a9764273adef0e5076900a8a6ff16cd247126aed9cf8c",
       "scripts/run_matrix.py": "1c6d36f23402dfcf000a6094e753db963ec3bf0e1455f98c5079eda46eda432a",
       "scripts/verify_integrity.py": "e39679de2cf03fb99d4a922f9c0df05d7a35106ff83f5c7339ce634c559d0928",

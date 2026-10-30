@@ -1,0 +1,11 @@
+{
+  "screenshots_text_count": 10,
+  "fallback_count": 13,
+  "relative_links_valid": true,
+  "protected_baseline_unchanged": true,
+  "m4_comparisons_passed": 5,
+  "audit_rows": 6,
+  "unit_tests_passed": 47,
+  "unit_tests_under_3_seconds": true,
+  "tracked_runtime_artifacts_excluded": true
+}

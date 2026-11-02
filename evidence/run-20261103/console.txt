@@ -231,3 +231,10 @@ END M5: exit=1, 290.28s
  create mode 100644 evidence/run-20261103/previous/a_raw_api-out/true.request.json
 START M6: sh tech-demo/d_harness/run_d.sh
 END M6: exit=0, 0.21s
+[devfest-kh-2026 13fb0db] devfest-kh: M6 verify synthetic harness controls without any model call
+ 5 files changed, 97 insertions(+), 2 deletions(-)
+ create mode 100644 evidence/run-20261103/m6/harness.txt
+START M7 policy: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python -m pytest -v tests/test_policy.py tests/test_dispatch_policy.py tests/test_sandbox.py
+END M7 policy: exit=0, 0.27s
+START M7 audit display: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/audit_tail.py
+END M7 audit display: exit=0, 0.04s

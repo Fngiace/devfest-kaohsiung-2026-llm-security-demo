@@ -185,5 +185,32 @@
     "wall_seconds": 0.2052119170111837,
     "finished_at": "2026-11-03T01:21:35.880310+08:00",
     "output": "evidence/run-20261103/m6/harness.txt"
+  },
+  {
+    "stage": "M7 policy",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "-m",
+      "pytest",
+      "-v",
+      "tests/test_policy.py",
+      "tests/test_dispatch_policy.py",
+      "tests/test_sandbox.py"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.2658831669978099,
+    "finished_at": "2026-11-03T01:21:36.186123+08:00",
+    "output": "evidence/run-20261103/m7/policy-tests.txt"
+  },
+  {
+    "stage": "M7 audit display",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "scripts/audit_tail.py"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.04051245900336653,
+    "finished_at": "2026-11-03T01:21:36.227780+08:00",
+    "output": "evidence/run-20261103/m7/tail.txt"
   }
 ]

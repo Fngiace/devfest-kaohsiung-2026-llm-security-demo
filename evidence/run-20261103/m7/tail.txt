@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-11-03T01:21:29.725913+08:00",
+  "role": "support_agent",
+  "tool": "delete_all_data",
+  "parameters": {
+    "input": "customer_db.json"
+  },
+  "decision": "deny",
+  "rule": "roles.support_agent.deny_patterns:delete_*"
+}
+{
+  "timestamp": "2026-11-03T01:21:32.626074+08:00",
+  "role": "support_agent",
+  "tool": "delete_all_data",
+  "parameters": {
+    "input": "customer_db.json"
+  },
+  "decision": "deny",
+  "rule": "roles.support_agent.deny_patterns:delete_*"
+}
+{
+  "timestamp": "2026-11-03T01:21:35.503426+08:00",
+  "role": "support_agent",
+  "tool": "delete_all_data",
+  "parameters": {
+    "input": "customer_db.json"
+  },
+  "decision": "deny",
+  "rule": "roles.support_agent.deny_patterns:delete_*"
+}

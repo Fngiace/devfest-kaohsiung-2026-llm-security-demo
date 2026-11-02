@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.15, pytest-9.2.0, pluggy-1.7.0 -- /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026
+configfile: pytest.ini
+plugins: anyio-4.14.2
+collecting ... collected 8 items
+
+tests/test_policy.py::test_all_decisions_recorded PASSED                 [ 12%]
+tests/test_policy.py::test_missing_and_invalid_policy_fail_closed PASSED [ 25%]
+tests/test_policy.py::test_admin_confirmation_and_unknown_role PASSED    [ 37%]
+tests/test_policy.py::test_audit_failure_blocks_allow PASSED             [ 50%]
+tests/test_dispatch_policy.py::test_actual_dispatch_denies_before_delete_and_audits PASSED [ 62%]
+tests/test_dispatch_policy.py::test_unguarded_demo_is_logged_as_bypass PASSED [ 75%]
+tests/test_sandbox.py::test_path_escape_and_symlink_blocked PASSED       [ 87%]
+tests/test_sandbox.py::test_only_fresh_demo_data_deleted PASSED          [100%]
+
+=============================== warnings summary ===============================
+venv/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+========================= 8 passed, 1 warning in 0.03s =========================

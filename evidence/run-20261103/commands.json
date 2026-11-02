@@ -174,5 +174,16 @@
     "wall_seconds": 290.28227591699397,
     "finished_at": "2026-11-03T01:21:35.588497+08:00",
     "output": "evidence/run-20261103/m5-regression/console.txt"
+  },
+  {
+    "stage": "M6",
+    "command": [
+      "sh",
+      "tech-demo/d_harness/run_d.sh"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.2052119170111837,
+    "finished_at": "2026-11-03T01:21:35.880310+08:00",
+    "output": "evidence/run-20261103/m6/harness.txt"
   }
 ]

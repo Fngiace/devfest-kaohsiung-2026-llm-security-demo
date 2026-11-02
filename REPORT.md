@@ -21,7 +21,7 @@
 | M3 | 完成三設定探測；HTTP 錯誤也保留 | evidence/run-20261103/m3/ |
 | M4 | 實驗完成：未證明五次一致，現場用備援／程式差異 | evidence/run-20261103/m4/ |
 | M5 | 部分完成：已執行；23/24 通過 | evidence/run-20261103/m5/ |
-| M6 | 待執行 | evidence/run-20261103/m6/ |
+| M6 | 完成：naive 全過；strict 兩壞一好；首行警語正確 | evidence/run-20261103/m6/ |
 | M7 | 待執行 | evidence/run-20261103/m7/ |
 | M8 | 待執行 | evidence/run-20261103/m8/ |
 

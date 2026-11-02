@@ -1,0 +1,3 @@
+2026-11-03 Asia/Taipei: cua.getApp("Terminal")
+Computer Use is not allowed to use the app 'com.apple.Terminal' for safety reasons.
+SDD M8 fallback: preserve actual text output; manual terminal screenshots required.

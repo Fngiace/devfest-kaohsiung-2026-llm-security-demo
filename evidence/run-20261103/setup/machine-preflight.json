@@ -1,0 +1,9 @@
+{
+  "captured_at": "2026-11-03T01:07:06.537285+08:00",
+  "chip": "Apple M1 Pro",
+  "ram_bytes": 34359738368,
+  "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=28770403)\t95%; AC attached; not charging present: true\n",
+  "branch": "devfest-kh-2026",
+  "remote": "https://github.com/Fngiace/devfest-kaohsiung-2026-llm-security-demo.git",
+  "main_refs": "absent"
+}

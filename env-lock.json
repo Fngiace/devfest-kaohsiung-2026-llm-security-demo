@@ -1,13 +1,13 @@
 {
-  "captured_at": "2026-10-30T17:21:06.469542+08:00",
+  "captured_at": "2026-11-03T01:08:17.932465+08:00",
   "machine": {
-    "chip": "Apple M2",
-    "ram_gb": 16.0,
+    "chip": "Apple M1 Pro",
+    "ram_gb": 32.0,
     "macos": "27.0.1",
     "build": "26A434"
   },
   "ollama": {
-    "version": "0.40.6",
+    "version": "0.40.9",
     "model": "gemma4:e4b",
     "digest": "eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b",
     "list_id": "eb2177adf764",
@@ -15,7 +15,7 @@
     "parameter_size": "8.1B"
   },
   "python": {
-    "version": "3.14.6",
+    "version": "3.12.15",
     "requirements_hash": "e5112a16798feb11436f224597bf85052a838b3ccf5e26f624ed180be1699dc2",
     "packages": {
       "annotated-types": "0.8.0",
@@ -28,7 +28,7 @@
       "iniconfig": "2.3.1",
       "ollama": "0.5.1",
       "packaging": "26.3",
-      "pip": "26.1.2",
+      "pip": "26.2.1",
       "pluggy": "1.7.0",
       "pydantic": "2.13.4",
       "pydantic_core": "2.46.4",
@@ -40,7 +40,7 @@
   },
   "repo": {
     "branch": "devfest-kh-2026",
-    "commit": "3ab5bd778f322fc0430814e51c6615948a5eda0a",
+    "commit": "38cef6bac6c65a1759f0ea90cb7e185cbed89697",
     "commit_semantics": "latest commit affecting runtime source paths; evidence-only commits excluded",
     "source_sha256": {
       "common/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
@@ -78,21 +78,22 @@
       "scenario3-agent-privilege/tools.py": "838247f3cd4f502916b2523afb886b6c994e94b1a9aaeb32427f0740a43c1122",
       "scripts/audit_tail.py": "698836c2e74a7a68c863bfdd263046569c1bd53514c016d8bbd215ea2a2d5a5c",
       "scripts/build_delivery.py": "e4d9eb1f7934e6ee436c47da03e1f18f319e5a8322edd1787eb2a6d51af80f71",
-      "scripts/build_timing.py": "f2e5b1e03a95adc1cb3e28147854de975452715a73eb8dc9471f3ed393c8d964",
+      "scripts/build_timing.py": "84a5955bde84665e091ee2b881b8acddc55ee95fe367d32992a4f84e3ca04acb",
       "scripts/check_env.py": "0c7f098cee3abaa35bdf45e45dc14cbefa500c9e3a1c56fe9e52c1893cca8e70",
       "scripts/demo.py": "3746cddc021179e6a53cae7055588974fb78ee6f3d104101e59ab279fcf6834c",
       "scripts/final_report.py": "095eba204de39a9a9c8d32ff61c972d50437abea3a6a0f9d4c04dcb4057f2546",
       "scripts/run_initial_live.py": "57c4fa4477281e9e8f1a9764273adef0e5076900a8a6ff16cd247126aed9cf8c",
       "scripts/run_matrix.py": "1c6d36f23402dfcf000a6094e753db963ec3bf0e1455f98c5079eda46eda432a",
+      "scripts/run_sdd.py": "31fe1b34835b7de211ad085675ec698e262757ea15617dbf7415cb86dcaf38f9",
       "scripts/verify_integrity.py": "e39679de2cf03fb99d4a922f9c0df05d7a35106ff83f5c7339ce634c559d0928",
       "scripts/warmup.py": "6509ad4eda1b9459d9ec1838912663d975088df78132e6c6b8778c961562c1b4",
-      "tech-demo/a_raw_api/curl.sh": "408b9633b1ae97946dd2bf7bbe0c6daf3bb3ad354771dc8ae7ca391a2972b224",
+      "tech-demo/a_raw_api/curl.sh": "db3d15b40005d856de341236d43d70cdbf2e676b80775525fbc5997f1822355f",
       "tech-demo/a_raw_api/probe_raw.py": "eb31b988e5c3bead0891668088769daf3da625ff21552258258fe694e6a47694",
       "tech-demo/b_fail_open/config.json": "f9616ec75f46419c91ec41503283762620d35260e6c5a4f34c67b9aa5dd952b7",
       "tech-demo/b_fail_open/fixed_app.py": "1fa7321c598de5eef95c6f5b75772c49b1350756285e4c31a6cab7569aea08ad",
       "tech-demo/b_fail_open/naive_app.py": "ef811754f482cab7a1dbdae5fc9288b1666cd02241ca810773b249e217973ca4",
       "tech-demo/b_fail_open/run_compare.py": "cd19c19542541141973199162faeaa87dbfbff468ef24609735708d4865495a4",
-      "tech-demo/b_fail_open/scan_budget.py": "b1940ea97e73ec465846511b1f122637e7e34ed900259f972ba8f22ed1afecfb",
+      "tech-demo/b_fail_open/scan_budget.py": "a0afa803a2f014ef2e377a06160eb1348af6d20f4b133c8073a43068bf34f53b",
       "tech-demo/d_harness/fixtures/graded_full_output.json": "4a2f8d9844e3b73571a3c9cb62e1866bf11db3f5f8473c6ada3f84a0f718d0ed",
       "tech-demo/d_harness/fixtures/healthy.json": "295bc55f364b0f3004bda7180a77f2df028a7b882c4e97e99ab850a40960d96e",
       "tech-demo/d_harness/fixtures/no_assertions.json": "a735a99f1d2a5d37e4851b9dadd1172a5ca8924c8b32400c8d1eb5a9ef59f764",

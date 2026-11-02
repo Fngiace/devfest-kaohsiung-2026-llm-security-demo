@@ -1,0 +1,10 @@
+START M0 version: ollama --version
+END M0 version: exit=0, 0.05s
+START M0 list: ollama list
+END M0 list: exit=0, 0.08s
+START M0 show: ollama show gemma4:e4b
+END M0 show: exit=0, 0.47s
+START M0 capture: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/check_env.py --capture
+END M0 capture: exit=0, 0.36s
+START M0 check: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/check_env.py
+END M0 check: exit=0, 0.32s

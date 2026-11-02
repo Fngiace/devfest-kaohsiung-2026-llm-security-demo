@@ -1,0 +1,59 @@
+[
+  {
+    "stage": "M0 version",
+    "command": [
+      "ollama",
+      "--version"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.048514250011066906,
+    "finished_at": "2026-11-03T01:08:17.042762+08:00",
+    "output": "evidence/run-20261103/m0/ollama-version.txt"
+  },
+  {
+    "stage": "M0 list",
+    "command": [
+      "ollama",
+      "list"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.08495391700125765,
+    "finished_at": "2026-11-03T01:08:17.128245+08:00",
+    "output": "evidence/run-20261103/m0/ollama-list.txt"
+  },
+  {
+    "stage": "M0 show",
+    "command": [
+      "ollama",
+      "show",
+      "gemma4:e4b"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.47284366699750535,
+    "finished_at": "2026-11-03T01:08:17.601711+08:00",
+    "output": "evidence/run-20261103/m0/ollama-show.txt"
+  },
+  {
+    "stage": "M0 capture",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "scripts/check_env.py",
+      "--capture"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.36333804100286216,
+    "finished_at": "2026-11-03T01:08:17.967837+08:00",
+    "output": "evidence/run-20261103/m0/capture.txt"
+  },
+  {
+    "stage": "M0 check",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "scripts/check_env.py"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.3172820410109125,
+    "finished_at": "2026-11-03T01:08:18.286232+08:00",
+    "output": "evidence/run-20261103/m0/check.txt"
+  }
+]

@@ -23,14 +23,15 @@ WARNING = "⚠ 合成測資，用於示範判定邏輯，非實測結果"
 SCENES = {
     name: {"command": [script, *(["--live"] if live else []), "--no-save"],
            "fallback": f"{name}.txt", "model": True, "timeout": 60,
-           "recommended": "replay" if name in {"s1-attack", "s1-attack-zh", "s2-attack"} else "live"}
+           # Current laptop: S1 passes both rounds; S2 attack is 5/6 overall.
+           "recommended": "replay" if name == "s2-attack" else "live"}
     for name, script, live in CASES
 }
 SCENES.update({
     "raw-api": {"command": ["tech-demo/a_raw_api/probe_raw.py"], "fallback": "a-raw-json.txt",
                 "model": True, "timeout": 90, "recommended": "live"},
     "fail-open": {"command": ["tech-demo/b_fail_open/run_compare.py"], "fallback": "b-compare.txt",
-                  "model": True, "timeout": 60, "recommended": "live"},
+                  "model": True, "timeout": 60, "recommended": "replay"},
     "tests": {"command": ["-m", "pytest", "-v"], "fallback": "c-pytest.txt",
               "model": False, "timeout": 30, "recommended": "live"},
     "harness": {"command": ["tech-demo/d_harness/run_d.py"], "fallback": "d-harness.txt",

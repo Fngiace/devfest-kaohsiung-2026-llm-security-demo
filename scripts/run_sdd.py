@@ -7,11 +7,11 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime
-import hashlib
 import json
 import os
 from pathlib import Path
 import re
+import runpy
 import shutil
 from statistics import median
 import subprocess
@@ -20,7 +20,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from common.local_api import save_json
+from common.local_api import CANARIES, save_json
 
 PY = str(ROOT / "venv/bin/python")
 WARNING = "⚠ 合成測資，用於示範判定邏輯，非實測結果"
@@ -144,10 +144,12 @@ class Run:
 
         self.run("M8 integrity", [PY, "scripts/verify_integrity.py"], "m8/integrity.json")
         self.delivery(initial, regression)
-        self.run("M8 final env", [PY, "scripts/check_env.py"], "m8/final-env-check.txt")
-        self.status["M8"] = "完成備援、十份截圖文字素材與操作表；終端機截圖受工具限制"
+        check = self.run("M8 final env", [PY, "scripts/check_env.py"], "m8/final-env-check.txt")
+        self.status["M8"] = ("完成備援、十份截圖文字素材與操作表；終端機截圖受工具限制"
+                             if check["returncode"] == 0 else "部分完成：素材已產生，最終環境檢查未通過")
         self.checkpoint("M8", "deliver real current-machine fallbacks and stage runsheet",
-                        "fallback-logs/devfest-kh", "screenshots", "RUNSHEET-devfest-kh.md", "env-lock.json")
+                        "fallback-logs/devfest-kh", "screenshots", "RUNSHEET-devfest-kh.md", "env-lock.json",
+                        "tech-demo/a_raw_api/out")
         print(f"ALL STAGES EXECUTED: {self.base}", flush=True)
 
     def delivery(self, initial, regression):
@@ -158,7 +160,14 @@ class Run:
         old = self.base / "previous/delivery"
         old.mkdir(parents=True, exist_ok=True)
         for folder in (fallback, screenshots):
-            shutil.copytree(folder, old / folder.name, dirs_exist_ok=True)
+            if not (old / folder.name).exists():
+                shutil.copytree(folder, old / folder.name)
+        canonical = ROOT / "tech-demo/a_raw_api/out"
+        archived = self.base / "previous/a_raw_api-out"
+        if not archived.exists():
+            shutil.copytree(canonical, archived)
+        for path in (self.base / "m3/out").glob("*.json"):
+            shutil.copyfile(path, canonical / path.name)
         selected = {}
         for name in dict.fromkeys(r["case"] for r in initial):
             group = [r for r in (regression if "defended" in name else initial) if r["case"] == name]
@@ -175,6 +184,9 @@ class Run:
                    "s3-audit.jsonl": "m7/actions.jsonl"}
         for name, source in sources.items():
             (fallback / name).write_text(header + (self.base / source).read_text())
+        replay = self.saved_comparison(header)
+        if replay is not None:
+            (fallback / "b-compare.txt").write_text(replay)
         panels = {"s06-s1-attack": ["s1-attack-zh"], "s19-s1-defended": ["s1-defended-zh"],
                   "s20-s2": ["s2-attack", "s2-defended"], "s21-s3": ["s3-defended"]}
         for panel, names in panels.items():
@@ -209,6 +221,39 @@ class Run:
             "screenshots": "ten real-output text alternatives; manual terminal screenshots required"})
         self.runsheet(initial)
 
+    def saved_comparison(self, header):
+        """Render one actual saved truncated response; never call it five-run proof."""
+        if self.read("m4/config.json", {}).get("num_predict") is not None:
+            return None
+        trials = self.read("m4/out/scan-results.json", [])
+        qualifying = [r for r in trials if r["qualifies"]]
+        if not qualifying:
+            return None
+        row = next((r for r in qualifying if len(r["content_secrets"]) == len(CANARIES)), qualifying[0])
+        source = self.base / f"m4/out/n{row['num_predict']}-{row['repeat']}.json"
+        response = json.loads(source.read_text())
+        raw = response.get("message", {}).get("content", "")
+        naive = runpy.run_path(str(ROOT / "tech-demo/b_fail_open/naive_app.py"))["render"]
+        fixed = runpy.run_path(str(ROOT / "tech-demo/b_fail_open/fixed_app.py"))["render"]
+        from nemoclaw.output_rail import SAFE_MESSAGE
+        left, right = naive(raw, CANARIES), fixed(raw, CANARIES)
+        checks = {"http_ok": row["http_status"] == 200, "truncated": response.get("done_reason") == "length",
+                  "naive_leaks": any(s in left for s in CANARIES),
+                  "no_closed_answer": "</answer>" not in raw.lower(), "fixed_safe": right == SAFE_MESSAGE}
+        if not all(checks.values()):
+            return None
+        text = (header + "[本機實測備援：重播已保存的真實回應；未發起新的模型呼叫]\n"
+                "此 N 未達連續 5/5，不能宣稱可穩定 LIVE。\n"
+                f"source={source.relative_to(ROOT)}\nnum_predict={row['num_predict']} temperature=0 seed=42\n\n"
+                "naive | fixed\n❌ naive 找不到閉合 answer，fallback 回傳原始輸出：\n" + left
+                + "\n\n✅ fixed 未收到閉合 answer，回傳固定安全訊息：\n" + right
+                + "\n\n檢查：" + json.dumps(checks, ensure_ascii=False) + "\n")
+        (self.base / "m4/saved-response-compare.txt").write_text(text)
+        save_json(self.base / "m4/saved-response-compare.json", {
+            "source": str(source.relative_to(ROOT)), "num_predict": row["num_predict"],
+            "mode": "saved_real_response_replay", "five_consecutive_verified": False, "assertions": checks})
+        return text
+
     def runsheet(self, rows):
         lines = ["# DevFest 高雄現場操作表：本次候選機", "", "開講前 10 分鐘：", "",
                  "1. 接電源、關閉大型程式，確認指定模型已下載。",
@@ -221,9 +266,10 @@ class Run:
                  "|---|---|---:|---:|---|---|---|"]
         for name in dict.fromkeys(r["case"] for r in rows):
             group = [r for r in rows if r["case"] == name]
+            regression = [r for r in self.read("m5-regression/results.json", []) if r["case"] == name]
             seconds = median(r["wall_seconds"] for r in group)
             passed = sum(r["passed"] for r in group)
-            advice = "預錄" if passed != 3 or seconds > 60 else ("LIVE" if seconds <= 30 else "LIVE，備妥預錄")
+            advice = "預錄" if (passed != 3 or seconds > 60 or any(not r["passed"] for r in regression)) else ("LIVE" if seconds <= 30 else "LIVE，備妥預錄")
             cmd = "venv/bin/python " + " ".join(group[0]["command"][1:])
             speech = ("每個生成欄位都要確認去向。" if name.startswith("s1") else
                       "檢索資料不是指令來源。" if name.startswith("s2") else "工具權限由程式端政策決定。")
@@ -234,12 +280,15 @@ class Run:
         tests = self.read("m5/test-timing.json", {})
         harness = next((c for c in self.commands if c["stage"] == "M6"), {})
         compare_seconds = median(r["wall_seconds"] for r in comparisons) if comparisons else 0
-        lines += ["", "預期畫面：S1 攻擊檢查 canary，defended 的 Returned to user 不含機密；"
+        lines += ["", "建議同時採納兩輪穩定度；RAG 攻擊若回歸有失敗，即使初始 M2 表為 LIVE 仍切備援。",
+                  "預期畫面：S1 攻擊檢查 canary，defended 的 Returned to user 不含機密；"
                   "S2 攻擊檢查 ORCHID-ESCALATE-9；S3 defended 顯示 rejected 且 customer_db.json exists: True。", "",
                   "| 技術段落 | 指令 | 預期畫面／實測秒數 | 失敗切換 | 台上口徑 |", "|---|---|---|---|---|",
                   f"| A | `venv/bin/python scripts/demo.py --scene raw-api --mode live` | 三設定原始 JSON；API 合計 {sum(p['total_seconds'] for p in probe):.2f}s | `cat fallback-logs/devfest-kh/a-raw-json.txt` | 先看真實欄位再決定哪些資料能離開後端。 |",
                   f"| A curl | `sh tech-demo/a_raw_api/curl.sh false {self.base.relative_to(ROOT)}/m3/out` | 同一份已保存 request | `cat {self.base.relative_to(ROOT)}/m3/out/false.json` | 直接 HTTP 驗證 runtime。 |",
-                  f"| B | `venv/bin/python tech-demo/b_fail_open/run_compare.py` | N={config.get('num_predict')}；中位 {compare_seconds:.2f}s；若 null 則未成功重現 | `cat fallback-logs/devfest-kh/b-compare.txt` | 解析失敗時回固定安全訊息。 |",
+                  (f"| B | `venv/bin/python tech-demo/b_fail_open/run_compare.py` | N={config.get('num_predict')}；中位 {compare_seconds:.2f}s | `cat fallback-logs/devfest-kh/b-compare.txt` | 解析失敗時回固定安全訊息。 |"
+                   if config.get('num_predict') is not None else
+                   "| B 備援 | `cat fallback-logs/devfest-kh/b-compare.txt` | 未找到連續 5/5 的 N；只重播有來源的真實結果 | 同左 | 這是本機實測回應，未達穩定 LIVE 門檻。 |"),
                   "| B diff | `cat tech-demo/b_fail_open/diff.patch` | naive 與 fixed 的實際差異 | 同左 | 缺少閉合標籤時 fail closed。 |",
                   f"| C | `venv/bin/python -m pytest -v` | 全綠；整個程序 {tests.get('wall_seconds', 0):.3f}s | `cat fallback-logs/devfest-kh/c-pytest.txt` | 掃描涵蓋常見包裝，語意改寫仍有限制。 |",
                   f"| D | `sh tech-demo/d_harness/run_d.sh` | 首行合成警語，strict 兩壞一好；{harness.get('wall_seconds', 0):.3f}s | `cat fallback-logs/devfest-kh/d-harness.txt` | 先驗證斷言真的執行。 |",

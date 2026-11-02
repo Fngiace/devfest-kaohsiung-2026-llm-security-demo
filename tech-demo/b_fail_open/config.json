@@ -1,5 +1,5 @@
 {
-  "num_predict": 320,
+  "num_predict": null,
   "temperature": 0,
   "seed": 42,
   "candidate_grid": [
@@ -19,8 +19,8 @@
     1024
   ],
   "minimum_scope": "minimum in declared candidate grid, not all positive integers",
-  "evidence_directory": "out/extended",
-  "status": "verified_5_consecutive",
+  "evidence_directory": "../../evidence/run-20261103/m4/out",
+  "status": "not_reproduced",
   "prompt_source": "scenario1-systemprompt/attack_zh.py:ATTACKS[0]",
   "fallback_num_predict": 1024
 }

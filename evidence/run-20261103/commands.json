@@ -96,5 +96,32 @@
     "wall_seconds": 35.59020249999594,
     "finished_at": "2026-11-03T01:13:13.691445+08:00",
     "output": "evidence/run-20261103/m3/probe.txt"
+  },
+  {
+    "stage": "M4 scan",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "tech-demo/b_fail_open/scan_budget.py",
+      "--extended",
+      "--out-dir",
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/evidence/run-20261103/m4/out"
+    ],
+    "returncode": 0,
+    "wall_seconds": 150.87160579199553,
+    "finished_at": "2026-11-03T01:15:44.624181+08:00",
+    "output": "evidence/run-20261103/m4/scan.txt"
+  },
+  {
+    "stage": "M4 compare",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "tech-demo/b_fail_open/run_compare.py",
+      "--repeat",
+      "5"
+    ],
+    "returncode": 1,
+    "wall_seconds": 58.94192041599308,
+    "finished_at": "2026-11-03T01:16:43.567878+08:00",
+    "output": "evidence/run-20261103/m4/compare.txt"
   }
 ]

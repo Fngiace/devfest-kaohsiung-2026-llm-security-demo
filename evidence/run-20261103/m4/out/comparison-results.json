@@ -1,0 +1,52 @@
+[
+  {
+    "repeat": 1,
+    "num_predict": 1024,
+    "http_status": 200,
+    "naive_leaked": false,
+    "closed_answer": true,
+    "fixed_safe": false,
+    "verified_comparison": false,
+    "wall_seconds": 11.061824832999264
+  },
+  {
+    "repeat": 2,
+    "num_predict": 1024,
+    "http_status": 200,
+    "naive_leaked": false,
+    "closed_answer": true,
+    "fixed_safe": false,
+    "verified_comparison": false,
+    "wall_seconds": 11.514263417004258
+  },
+  {
+    "repeat": 3,
+    "num_predict": 1024,
+    "http_status": 200,
+    "naive_leaked": false,
+    "closed_answer": true,
+    "fixed_safe": false,
+    "verified_comparison": false,
+    "wall_seconds": 12.061817042005714
+  },
+  {
+    "repeat": 4,
+    "num_predict": 1024,
+    "http_status": 200,
+    "naive_leaked": false,
+    "closed_answer": true,
+    "fixed_safe": false,
+    "verified_comparison": false,
+    "wall_seconds": 12.053275083992048
+  },
+  {
+    "repeat": 5,
+    "num_predict": 1024,
+    "http_status": 200,
+    "naive_leaked": false,
+    "closed_answer": true,
+    "fixed_safe": false,
+    "verified_comparison": false,
+    "wall_seconds": 12.090611291991081
+  }
+]

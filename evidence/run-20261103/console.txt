@@ -93,3 +93,17 @@ END M2: exit=0, 0.05s
  create mode 100644 evidence/run-20261103/m2/timing.txt
 START M3: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python tech-demo/a_raw_api/probe_raw.py --out-dir /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/evidence/run-20261103/m3/out
 END M3: exit=0, 35.59s
+[devfest-kh-2026 22a93d8] devfest-kh: M3 preserve raw requests and responses for three thinking settings
+ 12 files changed, 228 insertions(+), 2 deletions(-)
+ create mode 100644 evidence/run-20261103/m3/out/false.json
+ create mode 100644 evidence/run-20261103/m3/out/false.request.json
+ create mode 100644 evidence/run-20261103/m3/out/omitted.json
+ create mode 100644 evidence/run-20261103/m3/out/omitted.request.json
+ create mode 100644 evidence/run-20261103/m3/out/summary.json
+ create mode 100644 evidence/run-20261103/m3/out/true.json
+ create mode 100644 evidence/run-20261103/m3/out/true.request.json
+ create mode 100644 evidence/run-20261103/m3/probe.txt
+START M4 scan: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python tech-demo/b_fail_open/scan_budget.py --extended --out-dir /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/evidence/run-20261103/m4/out
+END M4 scan: exit=0, 150.87s
+START M4 compare: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python tech-demo/b_fail_open/run_compare.py --repeat 5
+END M4 compare: exit=1, 58.94s

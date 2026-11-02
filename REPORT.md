@@ -19,7 +19,7 @@
 | M1 | 完成 | evidence/run-20261103/m1/ |
 | M2 | 完成；與 M1 共用三次量測，沒有把備援算成實測 | evidence/run-20261103/m2/ |
 | M3 | 完成三設定探測；HTTP 錯誤也保留 | evidence/run-20261103/m3/ |
-| M4 | 待執行 | evidence/run-20261103/m4/ |
+| M4 | 實驗完成：未證明五次一致，現場用備援／程式差異 | evidence/run-20261103/m4/ |
 | M5 | 待執行 | evidence/run-20261103/m5/ |
 | M6 | 待執行 | evidence/run-20261103/m6/ |
 | M7 | 待執行 | evidence/run-20261103/m7/ |
@@ -64,12 +64,17 @@ think=false 的單次結果不代表其他輸入安全；不以 request 內原�
 
 ## 5. M4 截斷掃描與五次結果
 
-選定 N：`None`；候選集合：`[]`。最小值限於宣告的遞增候選集合。
+選定 N：`None`；候選集合：`[64, 96, 128, 160, 200, 256, 320, 384, 448, 512, 640, 768, 896, 1024]`。最小值限於宣告的遞增候選集合。
 temperature=0、seed=42；沿用原攻擊與原 prompt；不把原生 message.thinking 拼接成 naive 顯示的 content。
 每個候選第一次不合格即淘汰；選中的候選必須連續五次合格，再獨立比較五次。
 
 | 次數 | N | naive 洩漏 | answer 閉合 | fixed 安全 | 完整驗證 |
 |---|---:|---|---|---|---|
+| 1 | 1024 | False | True | False | False |
+| 2 | 1024 | False | True | False | False |
+| 3 | 1024 | False | True | False | False |
+| 4 | 1024 | False | True | False | False |
+| 5 | 1024 | False | True | False | False |
 
 ## 6. 偏離 SDD 與原因
 

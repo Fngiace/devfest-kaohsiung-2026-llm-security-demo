@@ -107,3 +107,60 @@ START M4 scan: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-de
 END M4 scan: exit=0, 150.87s
 START M4 compare: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python tech-demo/b_fail_open/run_compare.py --repeat 5
 END M4 compare: exit=1, 58.94s
+[devfest-kh-2026 06c0cae] devfest-kh: M4 record actual truncation scan and five comparisons
+ 52 files changed, 1182 insertions(+), 6 deletions(-)
+ create mode 100644 evidence/run-20261103/m4/compare.txt
+ create mode 100644 evidence/run-20261103/m4/config.json
+ create mode 100644 evidence/run-20261103/m4/out/compare-20261103T011544705651-1.json
+ create mode 100644 evidence/run-20261103/m4/out/compare-20261103T011544705651-2.json
+ create mode 100644 evidence/run-20261103/m4/out/compare-20261103T011544705651-3.json
+ create mode 100644 evidence/run-20261103/m4/out/compare-20261103T011544705651-4.json
+ create mode 100644 evidence/run-20261103/m4/out/compare-20261103T011544705651-5.json
+ create mode 100644 evidence/run-20261103/m4/out/comparison-20261103T011544705651.results.json
+ create mode 100644 evidence/run-20261103/m4/out/comparison-results.json
+ create mode 100644 evidence/run-20261103/m4/out/n1024-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n1024-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n128-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n128-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n160-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n160-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n200-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n200-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n256-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n256-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n320-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n320-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n384-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n384-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n384-2.json
+ create mode 100644 evidence/run-20261103/m4/out/n384-2.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n384-3.json
+ create mode 100644 evidence/run-20261103/m4/out/n384-3.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n448-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n448-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n448-2.json
+ create mode 100644 evidence/run-20261103/m4/out/n448-2.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n448-3.json
+ create mode 100644 evidence/run-20261103/m4/out/n448-3.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n512-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n512-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n64-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n64-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n640-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n640-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n768-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n768-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n896-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n896-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/n96-1.json
+ create mode 100644 evidence/run-20261103/m4/out/n96-1.request.json
+ create mode 100644 evidence/run-20261103/m4/out/scan-results.json
+ create mode 100644 evidence/run-20261103/m4/scan.txt
+START M5 relock: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/check_env.py --capture
+END M5 relock: exit=0, 0.37s
+START M5 env: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/check_env.py
+END M5 env: exit=0, 0.32s
+START M5 pytest: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python -m pytest -v
+END M5 pytest: exit=0, 0.96s
+START M5: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/run_matrix.py --phase run-20261103/m5-regression --repeats 3
+END M5: exit=1, 290.28s

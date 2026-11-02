@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/scenario2-rag/attack.py", line 57, in <module>
+    assert LEAK in text, "attack did not reveal the injected target phrase"
+           ^^^^^^^^^^^^
+AssertionError: attack did not reveal the injected target phrase

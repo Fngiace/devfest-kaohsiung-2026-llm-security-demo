@@ -123,5 +123,56 @@
     "wall_seconds": 58.94192041599308,
     "finished_at": "2026-11-03T01:16:43.567878+08:00",
     "output": "evidence/run-20261103/m4/compare.txt"
+  },
+  {
+    "stage": "M5 relock",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "scripts/check_env.py",
+      "--capture"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.37356641700898763,
+    "finished_at": "2026-11-03T01:16:44.027077+08:00",
+    "output": "evidence/run-20261103/m5/capture.txt"
+  },
+  {
+    "stage": "M5 env",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "scripts/check_env.py"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.3171352920035133,
+    "finished_at": "2026-11-03T01:16:44.344815+08:00",
+    "output": "evidence/run-20261103/m5/check.txt"
+  },
+  {
+    "stage": "M5 pytest",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "-m",
+      "pytest",
+      "-v"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.9586797499941895,
+    "finished_at": "2026-11-03T01:16:45.304176+08:00",
+    "output": "evidence/run-20261103/m5/pytest.txt"
+  },
+  {
+    "stage": "M5",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "scripts/run_matrix.py",
+      "--phase",
+      "run-20261103/m5-regression",
+      "--repeats",
+      "3"
+    ],
+    "returncode": 1,
+    "wall_seconds": 290.28227591699397,
+    "finished_at": "2026-11-03T01:21:35.588497+08:00",
+    "output": "evidence/run-20261103/m5-regression/console.txt"
   }
 ]

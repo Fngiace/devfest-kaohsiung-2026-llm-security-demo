@@ -1,0 +1,13 @@
+{
+  "source": "evidence/run-20261103/m4/out/n448-1.json",
+  "num_predict": 448,
+  "mode": "saved_real_response_replay",
+  "five_consecutive_verified": false,
+  "assertions": {
+    "http_ok": true,
+    "truncated": true,
+    "naive_leaks": true,
+    "no_closed_answer": true,
+    "fixed_safe": true
+  }
+}

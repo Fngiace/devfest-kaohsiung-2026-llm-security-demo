@@ -1,0 +1,13 @@
+{
+  "stage": "M5 pytest",
+  "command": [
+    "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+    "-m",
+    "pytest",
+    "-v"
+  ],
+  "returncode": 0,
+  "wall_seconds": 0.9586797499941895,
+  "finished_at": "2026-11-03T01:16:45.304176+08:00",
+  "output": "evidence/run-20261103/m5/pytest.txt"
+}

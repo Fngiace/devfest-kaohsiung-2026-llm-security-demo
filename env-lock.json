@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-03T01:08:17.932465+08:00",
+  "captured_at": "2026-11-03T01:16:44.013930+08:00",
   "machine": {
     "chip": "Apple M1 Pro",
     "ram_gb": 32.0,
@@ -40,7 +40,7 @@
   },
   "repo": {
     "branch": "devfest-kh-2026",
-    "commit": "38cef6bac6c65a1759f0ea90cb7e185cbed89697",
+    "commit": "06c0cae651b4ef79fca510a5634a1586a9a72dea",
     "commit_semantics": "latest commit affecting runtime source paths; evidence-only commits excluded",
     "source_sha256": {
       "common/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
@@ -89,7 +89,7 @@
       "scripts/warmup.py": "6509ad4eda1b9459d9ec1838912663d975088df78132e6c6b8778c961562c1b4",
       "tech-demo/a_raw_api/curl.sh": "db3d15b40005d856de341236d43d70cdbf2e676b80775525fbc5997f1822355f",
       "tech-demo/a_raw_api/probe_raw.py": "eb31b988e5c3bead0891668088769daf3da625ff21552258258fe694e6a47694",
-      "tech-demo/b_fail_open/config.json": "f9616ec75f46419c91ec41503283762620d35260e6c5a4f34c67b9aa5dd952b7",
+      "tech-demo/b_fail_open/config.json": "78bc1d9d39c34fa488c5ed68aed9f55048ebb4ebed4f22e64cbc5eeb1adb1c26",
       "tech-demo/b_fail_open/fixed_app.py": "1fa7321c598de5eef95c6f5b75772c49b1350756285e4c31a6cab7569aea08ad",
       "tech-demo/b_fail_open/naive_app.py": "ef811754f482cab7a1dbdae5fc9288b1666cd02241ca810773b249e217973ca4",
       "tech-demo/b_fail_open/run_compare.py": "cd19c19542541141973199162faeaa87dbfbff468ef24609735708d4865495a4",

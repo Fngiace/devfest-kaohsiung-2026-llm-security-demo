@@ -212,5 +212,27 @@
     "wall_seconds": 0.04051245900336653,
     "finished_at": "2026-11-03T01:21:36.227780+08:00",
     "output": "evidence/run-20261103/m7/tail.txt"
+  },
+  {
+    "stage": "M8 integrity",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "scripts/verify_integrity.py"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.3103885000018636,
+    "finished_at": "2026-11-03T01:21:36.577353+08:00",
+    "output": "evidence/run-20261103/m8/integrity.json"
+  },
+  {
+    "stage": "M8 final env",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "scripts/check_env.py"
+    ],
+    "returncode": 0,
+    "wall_seconds": 0.3735924169886857,
+    "finished_at": "2026-11-03T01:21:36.970597+08:00",
+    "output": "evidence/run-20261103/m8/final-env-check.txt"
   }
 ]

@@ -1,4 +1,4 @@
-# generated_at=2026-10-30T17:07:48.037947+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b
+# generated_at=2026-11-03T01:21:36.578201+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b machine=Apple M1 Pro
 ⚠ 合成測資，用於示範判定邏輯，非實測結果
 
 no_assertions

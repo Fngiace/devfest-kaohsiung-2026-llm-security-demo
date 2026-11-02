@@ -1,68 +1,78 @@
-# generated_at=2026-10-30T17:07:48.037947+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b
+# generated_at=2026-11-03T01:21:36.578201+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b machine=Apple M1 Pro
 ============================= test session starts ==============================
-platform darwin -- Python 3.14.6, pytest-9.2.0, pluggy-1.7.0 -- /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/bin/python
+platform darwin -- Python 3.12.15, pytest-9.2.0, pluggy-1.7.0 -- /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python
 cachedir: .pytest_cache
-rootdir: /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1
+rootdir: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026
 configfile: pytest.ini
 testpaths: tests
 plugins: anyio-4.14.2
-collecting ... collected 47 items
+collecting ... collected 57 items
 
-tests/test_dispatch_policy.py::test_actual_dispatch_denies_before_delete_and_audits PASSED [  2%]
-tests/test_dispatch_policy.py::test_unguarded_demo_is_logged_as_bypass PASSED [  4%]
-tests/test_env_check.py::test_nested_drift_is_reported PASSED            [  6%]
-tests/test_env_check.py::test_added_or_missing_fields_are_drift PASSED   [  8%]
-tests/test_fail_closed.py::test_fail_closed[<thinking>SUPERVISOR-7788] PASSED [ 10%]
-tests/test_fail_closed.py::test_fail_closed[<answer>SUPERVISOR-7788] PASSED [ 12%]
-tests/test_fail_closed.py::test_fail_closed[<answer>SUPERVISOR-7788</answer>] PASSED [ 14%]
-tests/test_fail_closed.py::test_fail_closed[<answer>ok</answer><answer>second</answer>] PASSED [ 17%]
-tests/test_fail_closed.py::test_fail_closed[<answer><answer>nested</answer></answer>] PASSED [ 19%]
-tests/test_fail_closed.py::test_valid_answer_excludes_private_thinking PASSED [ 21%]
-tests/test_harness.py::test_control_must_be_detected PASSED              [ 23%]
-tests/test_harness.py::test_skipped_assertion_is_invalid PASSED          [ 25%]
-tests/test_harness.py::test_missing_recorded_answer_is_invalid PASSED    [ 27%]
-tests/test_harness.py::test_cli_fixtures_and_warning PASSED              [ 29%]
-tests/test_local_transport.py::test_environment_cannot_redirect_inference PASSED [ 31%]
-tests/test_local_transport.py::test_direct_api_rejects_external_or_unlisted_paths PASSED [ 34%]
-tests/test_measurement_assertions.py::test_printed_success_without_model_evidence_cannot_pass PASSED [ 36%]
-tests/test_measurement_assertions.py::test_zh_claim_requires_canary_in_thinking_not_only_answer PASSED [ 38%]
-tests/test_measurement_assertions.py::test_no_tool_attempt_does_not_prove_policy_blocked_it PASSED [ 40%]
-tests/test_output_rail.py::test_normalized_secret_blocked_in_returned_answer[\uff33\uff35\uff30\uff25\uff32\uff36\uff29\uff33\uff2f\uff32\uff0d\uff17\uff17\uff18\uff18] PASSED [ 42%]
-tests/test_output_rail.py::test_normalized_secret_blocked_in_returned_answer[S U P E R V I S O R 7 7 8 8] PASSED [ 44%]
-tests/test_output_rail.py::test_normalized_secret_blocked_in_returned_answer[U1VQRVJWSVNPUi03Nzg4] PASSED [ 46%]
-tests/test_output_rail.py::test_normalized_secret_blocked_in_returned_answer[53555045525649534f522d37373838] PASSED [ 48%]
-tests/test_output_rail.py::test_private_segment_never_returned PASSED    [ 51%]
-tests/test_output_rail.py::test_incomplete_answer_fails_closed PASSED    [ 53%]
-tests/test_policy.py::test_all_decisions_recorded PASSED                 [ 55%]
-tests/test_policy.py::test_missing_and_invalid_policy_fail_closed PASSED [ 57%]
-tests/test_policy.py::test_admin_confirmation_and_unknown_role PASSED    [ 59%]
-tests/test_policy.py::test_audit_failure_blocks_allow PASSED             [ 61%]
-tests/test_sandbox.py::test_path_escape_and_symlink_blocked PASSED       [ 63%]
-tests/test_sandbox.py::test_only_fresh_demo_data_deleted PASSED          [ 65%]
-tests/test_secret_scan.py::test_forms_and_original_offsets[SUPERVISOR-7788-exact] PASSED [ 68%]
-tests/test_secret_scan.py::test_forms_and_original_offsets[\uff33\uff35\uff30\uff25\uff32\uff36\uff29\uff33\uff2f\uff32\uff0d\uff17\uff17\uff18\uff18-NFKC] PASSED [ 70%]
-tests/test_secret_scan.py::test_forms_and_original_offsets[S U P E R V I S O R 7 7 8 8-remove_separators] PASSED [ 72%]
-tests/test_secret_scan.py::test_forms_and_original_offsets[S\u200bU\u200bP\u200bE\u200bR\u200bV\u200bI\u200bS\u200bO\u200bR\u200b-\u200b7\u200b7\u200b8\u200b8-remove_zero_width] PASSED [ 74%]
-tests/test_secret_scan.py::test_forms_and_original_offsets[supervisor-7788-casefold] PASSED [ 76%]
-tests/test_secret_scan.py::test_forms_and_original_offsets[U1VQRVJWSVNPUi03Nzg4-base64] PASSED [ 78%]
-tests/test_secret_scan.py::test_forms_and_original_offsets[5649502d5345435245542d3530-hex] PASSED [ 80%]
-tests/test_secret_scan.py::test_forms_and_original_offsets[cyB1IHAgZSByIHYgaSBzIG8gciA3IDcgOCA4-base64] PASSED [ 82%]
-tests/test_secret_scan.py::test_no_false_positive[\u60a8\u597d\uff0c\u60a8\u7684\u8a02\u55ae\u5df2\u51fa\u8ca8\u3002] PASSED [ 85%]
-tests/test_secret_scan.py::test_no_false_positive[SUPERVISOR] PASSED     [ 87%]
-tests/test_secret_scan.py::test_no_false_positive[abc123] PASSED         [ 89%]
-tests/test_secret_scan.py::test_no_false_positive[] PASSED               [ 91%]
-tests/test_secret_scan.py::test_no_false_positive[YWJjZGVmZ2hpamts] PASSED [ 93%]
-tests/test_secret_scan.py::test_multiple_occurrences PASSED              [ 95%]
-tests/test_secret_scan.py::test_empty_canary_ignored PASSED              [ 97%]
-tests/test_secret_scan.py::test_normalized_encoded_token_original_offsets PASSED [100%]
+tests/test_dispatch_policy.py::test_actual_dispatch_denies_before_delete_and_audits PASSED [  1%]
+tests/test_dispatch_policy.py::test_unguarded_demo_is_logged_as_bypass PASSED [  3%]
+tests/test_env_check.py::test_nested_drift_is_reported PASSED            [  5%]
+tests/test_env_check.py::test_added_or_missing_fields_are_drift PASSED   [  7%]
+tests/test_fail_closed.py::test_fail_closed[<thinking>SUPERVISOR-7788] PASSED [  8%]
+tests/test_fail_closed.py::test_fail_closed[<answer>SUPERVISOR-7788] PASSED [ 10%]
+tests/test_fail_closed.py::test_fail_closed[<answer>SUPERVISOR-7788</answer>] PASSED [ 12%]
+tests/test_fail_closed.py::test_fail_closed[<answer>ok</answer><answer>second</answer>] PASSED [ 14%]
+tests/test_fail_closed.py::test_fail_closed[<answer><answer>nested</answer></answer>] PASSED [ 15%]
+tests/test_fail_closed.py::test_valid_answer_excludes_private_thinking PASSED [ 17%]
+tests/test_harness.py::test_control_must_be_detected PASSED              [ 19%]
+tests/test_harness.py::test_skipped_assertion_is_invalid PASSED          [ 21%]
+tests/test_harness.py::test_missing_recorded_answer_is_invalid PASSED    [ 22%]
+tests/test_harness.py::test_cli_fixtures_and_warning PASSED              [ 24%]
+tests/test_local_transport.py::test_environment_cannot_redirect_inference PASSED [ 26%]
+tests/test_local_transport.py::test_direct_api_rejects_external_or_unlisted_paths PASSED [ 28%]
+tests/test_measurement_assertions.py::test_printed_success_without_model_evidence_cannot_pass PASSED [ 29%]
+tests/test_measurement_assertions.py::test_zh_claim_requires_canary_in_thinking_not_only_answer PASSED [ 31%]
+tests/test_measurement_assertions.py::test_no_tool_attempt_does_not_prove_policy_blocked_it PASSED [ 33%]
+tests/test_output_rail.py::test_normalized_secret_blocked_in_returned_answer[\uff33\uff35\uff30\uff25\uff32\uff36\uff29\uff33\uff2f\uff32\uff0d\uff17\uff17\uff18\uff18] PASSED [ 35%]
+tests/test_output_rail.py::test_normalized_secret_blocked_in_returned_answer[S U P E R V I S O R 7 7 8 8] PASSED [ 36%]
+tests/test_output_rail.py::test_normalized_secret_blocked_in_returned_answer[U1VQRVJWSVNPUi03Nzg4] PASSED [ 38%]
+tests/test_output_rail.py::test_normalized_secret_blocked_in_returned_answer[53555045525649534f522d37373838] PASSED [ 40%]
+tests/test_output_rail.py::test_private_segment_never_returned PASSED    [ 42%]
+tests/test_output_rail.py::test_incomplete_answer_fails_closed PASSED    [ 43%]
+tests/test_policy.py::test_all_decisions_recorded PASSED                 [ 45%]
+tests/test_policy.py::test_missing_and_invalid_policy_fail_closed PASSED [ 47%]
+tests/test_policy.py::test_admin_confirmation_and_unknown_role PASSED    [ 49%]
+tests/test_policy.py::test_audit_failure_blocks_allow PASSED             [ 50%]
+tests/test_sandbox.py::test_path_escape_and_symlink_blocked PASSED       [ 52%]
+tests/test_sandbox.py::test_only_fresh_demo_data_deleted PASSED          [ 54%]
+tests/test_secret_scan.py::test_forms_and_original_offsets[SUPERVISOR-7788-exact] PASSED [ 56%]
+tests/test_secret_scan.py::test_forms_and_original_offsets[\uff33\uff35\uff30\uff25\uff32\uff36\uff29\uff33\uff2f\uff32\uff0d\uff17\uff17\uff18\uff18-NFKC] PASSED [ 57%]
+tests/test_secret_scan.py::test_forms_and_original_offsets[S U P E R V I S O R 7 7 8 8-remove_separators] PASSED [ 59%]
+tests/test_secret_scan.py::test_forms_and_original_offsets[S\u200bU\u200bP\u200bE\u200bR\u200bV\u200bI\u200bS\u200bO\u200bR\u200b-\u200b7\u200b7\u200b8\u200b8-remove_zero_width] PASSED [ 61%]
+tests/test_secret_scan.py::test_forms_and_original_offsets[supervisor-7788-casefold] PASSED [ 63%]
+tests/test_secret_scan.py::test_forms_and_original_offsets[U1VQRVJWSVNPUi03Nzg4-base64] PASSED [ 64%]
+tests/test_secret_scan.py::test_forms_and_original_offsets[5649502d5345435245542d3530-hex] PASSED [ 66%]
+tests/test_secret_scan.py::test_forms_and_original_offsets[cyB1IHAgZSByIHYgaSBzIG8gciA3IDcgOCA4-base64] PASSED [ 68%]
+tests/test_secret_scan.py::test_no_false_positive[\u60a8\u597d\uff0c\u60a8\u7684\u8a02\u55ae\u5df2\u51fa\u8ca8\u3002] PASSED [ 70%]
+tests/test_secret_scan.py::test_no_false_positive[SUPERVISOR] PASSED     [ 71%]
+tests/test_secret_scan.py::test_no_false_positive[abc123] PASSED         [ 73%]
+tests/test_secret_scan.py::test_no_false_positive[] PASSED               [ 75%]
+tests/test_secret_scan.py::test_no_false_positive[YWJjZGVmZ2hpamts] PASSED [ 77%]
+tests/test_secret_scan.py::test_multiple_occurrences PASSED              [ 78%]
+tests/test_secret_scan.py::test_empty_canary_ignored PASSED              [ 80%]
+tests/test_secret_scan.py::test_normalized_encoded_token_original_offsets PASSED [ 82%]
+tests/test_stage_runner.py::test_replay_works_without_model_and_is_not_a_live_pass PASSED [ 84%]
+tests/test_stage_runner.py::test_environment_drift_blocks_model_and_never_passes[auto-True] PASSED [ 85%]
+tests/test_stage_runner.py::test_environment_drift_blocks_model_and_never_passes[live-False] PASSED [ 87%]
+tests/test_stage_runner.py::test_exit_zero_without_attack_evidence_is_not_success PASSED [ 89%]
+tests/test_stage_runner.py::test_live_defense_requires_real_response_and_policy_result PASSED [ 91%]
+tests/test_stage_runner.py::test_timeout_keeps_output_and_nonzero_status PASSED [ 92%]
+tests/test_stage_runner.py::test_existing_evidence_cannot_be_reused PASSED [ 94%]
+tests/test_stage_runner.py::test_missing_replay_is_a_failure PASSED      [ 96%]
+tests/test_stage_runner.py::test_synthetic_warning_precedes_scene_output PASSED [ 98%]
+tests/test_stage_runner.py::test_raw_probe_refuses_to_overwrite_canonical_evidence PASSED [100%]
 
 =============================== warnings summary ===============================
-venv/lib/python3.14/site-packages/anyio/pytest_plugin.py:14
-  /Users/fngi/Downloads/DevFest 2026 高雄場 Live Demo SDD v1/venv/lib/python3.14/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+venv/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
   The CallSpec2 alias will be removed in pytest 10.
   Update imports to use CallSpec instead.
   See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
     from _pytest.python import CallSpec2
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-======================== 47 passed, 1 warning in 0.49s =========================
+======================== 57 passed, 1 warning in 0.70s =========================

@@ -1,5 +1,3 @@
-# 終端截圖文字素材
+# 本機真實輸出的截圖文字素材
 
-Computer Use 安全限制禁止存取 com.apple.Terminal，實際錯誤保存在 evidence/m8/screenshot-capability.txt。因此依 SDD 提供十份實測純文字替代素材，沒有終端視窗 PNG。請在本機終端使用深色底與至少 20pt 字體，`cat screenshots/<name>.txt` 後手動截圖。
-
-每份包含來源與模型 digest；s07 兩份來自同一次模型回應。若標記未通過或沒有對應標籤，請勿裁掉狀態而當作成功畫面。M6 一律保留合成測資警語。
+Computer Use 拒絕存取 com.apple.Terminal，依 SDD 改交付十份純文字素材；限制紀錄見本次 evidence 目錄的 setup/screenshot-capability.txt。請使用深色終端、至少 20pt，cat 對應文字後手動截圖。保留未通過標示、來源與 M6 合成測資警語；s07 兩份來自同一個回應。

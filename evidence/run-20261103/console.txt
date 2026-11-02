@@ -34,3 +34,57 @@ END M0 check: exit=0, 0.32s
  create mode 100644 evidence/run-20261103/stage-status.json
 START M1: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/run_matrix.py --phase run-20261103/m1 --repeats 3
 END M1: exit=0, 259.60s
+[devfest-kh-2026 40af0a1] devfest-kh: M1 record all 24 actual scenario trials including failures
+ 55 files changed, 1078 insertions(+), 2 deletions(-)
+ create mode 100644 evidence/run-20261103/m1/console.txt
+ create mode 100644 evidence/run-20261103/m1/results.json
+ create mode 100644 evidence/run-20261103/m1/s1-attack-1.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-attack-1.txt
+ create mode 100644 evidence/run-20261103/m1/s1-attack-2.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-attack-2.txt
+ create mode 100644 evidence/run-20261103/m1/s1-attack-3.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-attack-3.txt
+ create mode 100644 evidence/run-20261103/m1/s1-attack-zh-1.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-attack-zh-1.txt
+ create mode 100644 evidence/run-20261103/m1/s1-attack-zh-2.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-attack-zh-2.txt
+ create mode 100644 evidence/run-20261103/m1/s1-attack-zh-3.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-attack-zh-3.txt
+ create mode 100644 evidence/run-20261103/m1/s1-defended-1.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-defended-1.txt
+ create mode 100644 evidence/run-20261103/m1/s1-defended-2.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-defended-2.txt
+ create mode 100644 evidence/run-20261103/m1/s1-defended-3.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-defended-3.txt
+ create mode 100644 evidence/run-20261103/m1/s1-defended-zh-1.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-defended-zh-1.txt
+ create mode 100644 evidence/run-20261103/m1/s1-defended-zh-2.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-defended-zh-2.txt
+ create mode 100644 evidence/run-20261103/m1/s1-defended-zh-3.jsonl
+ create mode 100644 evidence/run-20261103/m1/s1-defended-zh-3.txt
+ create mode 100644 evidence/run-20261103/m1/s2-attack-1.jsonl
+ create mode 100644 evidence/run-20261103/m1/s2-attack-1.txt
+ create mode 100644 evidence/run-20261103/m1/s2-attack-2.jsonl
+ create mode 100644 evidence/run-20261103/m1/s2-attack-2.txt
+ create mode 100644 evidence/run-20261103/m1/s2-attack-3.jsonl
+ create mode 100644 evidence/run-20261103/m1/s2-attack-3.txt
+ create mode 100644 evidence/run-20261103/m1/s2-defended-1.jsonl
+ create mode 100644 evidence/run-20261103/m1/s2-defended-1.txt
+ create mode 100644 evidence/run-20261103/m1/s2-defended-2.jsonl
+ create mode 100644 evidence/run-20261103/m1/s2-defended-2.txt
+ create mode 100644 evidence/run-20261103/m1/s2-defended-3.jsonl
+ create mode 100644 evidence/run-20261103/m1/s2-defended-3.txt
+ create mode 100644 evidence/run-20261103/m1/s3-attack-1.jsonl
+ create mode 100644 evidence/run-20261103/m1/s3-attack-1.txt
+ create mode 100644 evidence/run-20261103/m1/s3-attack-2.jsonl
+ create mode 100644 evidence/run-20261103/m1/s3-attack-2.txt
+ create mode 100644 evidence/run-20261103/m1/s3-attack-3.jsonl
+ create mode 100644 evidence/run-20261103/m1/s3-attack-3.txt
+ create mode 100644 evidence/run-20261103/m1/s3-defended-1.jsonl
+ create mode 100644 evidence/run-20261103/m1/s3-defended-1.txt
+ create mode 100644 evidence/run-20261103/m1/s3-defended-2.jsonl
+ create mode 100644 evidence/run-20261103/m1/s3-defended-2.txt
+ create mode 100644 evidence/run-20261103/m1/s3-defended-3.jsonl
+ create mode 100644 evidence/run-20261103/m1/s3-defended-3.txt
+START M2: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/build_timing.py --source /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/evidence/run-20261103/m1/results.json
+END M2: exit=0, 0.05s

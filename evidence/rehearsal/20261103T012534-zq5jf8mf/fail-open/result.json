@@ -1,0 +1,14 @@
+{
+  "scene": "fail-open",
+  "requested_mode": "replay",
+  "selected_mode": "replay",
+  "started_at": "2026-11-03T01:25:34.735542+08:00",
+  "live_attempted": false,
+  "live_passed": null,
+  "replay_shown": true,
+  "presentation_ready": true,
+  "reason": "planned_replay",
+  "returncode": null,
+  "assertions": {},
+  "wall_seconds": 0.00016358400171156973
+}

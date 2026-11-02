@@ -1,0 +1,11 @@
+{
+  "live_results": "evidence/rehearsal/20261103T012414-6n3ckxxi/results.json",
+  "replay_results": "evidence/rehearsal/20261103T012534-zq5jf8mf/results.json",
+  "total_scene_seconds": 80.72152637499676,
+  "live_passed": 9,
+  "planned_replays": [
+    "fail-open",
+    "s2-attack"
+  ],
+  "all_replay_no_model": true
+}

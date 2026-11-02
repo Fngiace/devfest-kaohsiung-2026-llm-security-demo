@@ -1,0 +1,20 @@
+{
+  "scene": "harness",
+  "requested_mode": "auto",
+  "selected_mode": "live",
+  "started_at": "2026-11-03T01:25:18.697570+08:00",
+  "live_attempted": true,
+  "live_passed": true,
+  "replay_shown": false,
+  "presentation_ready": true,
+  "reason": "live_passed",
+  "returncode": 0,
+  "assertions": {
+    "output_present": true
+  },
+  "command": [
+    "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+    "tech-demo/d_harness/run_d.py"
+  ],
+  "wall_seconds": 0.1711110829928657
+}

@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "24_initial_and_24_regression": true,
+    "three_trials_each": true,
+    "honest_results_24_and_23": true,
+    "all_24_defenses_pass": true,
+    "every_trial_model_and_tokens": true,
+    "failed_rag_raw_response_preserved": true,
+    "canonical_api_matches_current_run": true,
+    "three_think_settings": true,
+    "m4_no_five_consecutive_claim": true,
+    "m4_replay_real_and_labeled": true,
+    "all_fallbacks_timestamp_and_digest": true,
+    "ten_real_text_screenshot_alternatives": true,
+    "synthetic_warning_and_controls": true,
+    "57_pytest_under_three_seconds": true,
+    "rehearsal_9_live_2_planned_replays": true,
+    "all_replay_no_model": true,
+    "environment_check_pass": true,
+    "protected_baseline_integrity": true,
+    "14_audit_decisions_7_allow_7_deny": true,
+    "audit_fields": true,
+    "branch_and_main_unchanged": true
+  },
+  "passed": true,
+  "initial_passed": 24,
+  "regression_passed": 23,
+  "audit_total": 22,
+  "new_audit": 14,
+  "rehearsal_seconds": 80.72152637499676
+}

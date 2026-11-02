@@ -13,8 +13,8 @@
       "thinking_field_present": true
     },
     "error": null,
-    "eval_count": 554,
-    "total_seconds": 24.924793166
+    "eval_count": 640,
+    "total_seconds": 15.770920709
   },
   {
     "setting": "true",
@@ -30,8 +30,8 @@
       "thinking_field_present": true
     },
     "error": null,
-    "eval_count": 636,
-    "total_seconds": 25.583499292
+    "eval_count": 658,
+    "total_seconds": 16.054561125
   },
   {
     "setting": "false",
@@ -43,7 +43,7 @@
       "thinking_field_present": false
     },
     "error": null,
-    "eval_count": 174,
-    "total_seconds": 8.660734084
+    "eval_count": 136,
+    "total_seconds": 3.628696917
   }
 ]

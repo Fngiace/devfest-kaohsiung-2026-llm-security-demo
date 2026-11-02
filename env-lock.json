@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-03T01:16:44.013930+08:00",
+  "captured_at": "2026-11-03T01:24:09.302917+08:00",
   "machine": {
     "chip": "Apple M1 Pro",
     "ram_gb": 32.0,
@@ -40,7 +40,7 @@
   },
   "repo": {
     "branch": "devfest-kh-2026",
-    "commit": "06c0cae651b4ef79fca510a5634a1586a9a72dea",
+    "commit": "8a08a5ce23434116e57841816f48da36532b141d",
     "commit_semantics": "latest commit affecting runtime source paths; evidence-only commits excluded",
     "source_sha256": {
       "common/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
@@ -80,11 +80,11 @@
       "scripts/build_delivery.py": "e4d9eb1f7934e6ee436c47da03e1f18f319e5a8322edd1787eb2a6d51af80f71",
       "scripts/build_timing.py": "84a5955bde84665e091ee2b881b8acddc55ee95fe367d32992a4f84e3ca04acb",
       "scripts/check_env.py": "0c7f098cee3abaa35bdf45e45dc14cbefa500c9e3a1c56fe9e52c1893cca8e70",
-      "scripts/demo.py": "3746cddc021179e6a53cae7055588974fb78ee6f3d104101e59ab279fcf6834c",
+      "scripts/demo.py": "2ce1148f684eb5c03e983652faa2609104b5f2e6b5bfb2d24c6d7a4dbddbd2f6",
       "scripts/final_report.py": "095eba204de39a9a9c8d32ff61c972d50437abea3a6a0f9d4c04dcb4057f2546",
       "scripts/run_initial_live.py": "57c4fa4477281e9e8f1a9764273adef0e5076900a8a6ff16cd247126aed9cf8c",
       "scripts/run_matrix.py": "1c6d36f23402dfcf000a6094e753db963ec3bf0e1455f98c5079eda46eda432a",
-      "scripts/run_sdd.py": "31fe1b34835b7de211ad085675ec698e262757ea15617dbf7415cb86dcaf38f9",
+      "scripts/run_sdd.py": "45379796bccce6ed7a5951c91687abcdb8a39fbccb92ea08a27516e48adbc680",
       "scripts/verify_integrity.py": "e39679de2cf03fb99d4a922f9c0df05d7a35106ff83f5c7339ce634c559d0928",
       "scripts/warmup.py": "6509ad4eda1b9459d9ec1838912663d975088df78132e6c6b8778c961562c1b4",
       "tech-demo/a_raw_api/curl.sh": "db3d15b40005d856de341236d43d70cdbf2e676b80775525fbc5997f1822355f",

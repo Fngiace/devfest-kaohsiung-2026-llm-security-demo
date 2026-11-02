@@ -1,4 +1,4 @@
-# generated_at=2026-11-03T01:18:37.824566+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b
+# generated_at=2026-11-03T01:23:41.320568+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b machine=Apple M1 Pro
 [本機實測備援：重播已保存的真實回應；未發起新的模型呼叫]
 此 N 未達連續 5/5，不能宣稱可穩定 LIVE。
 source=evidence/run-20261103/m4/out/n448-1.json

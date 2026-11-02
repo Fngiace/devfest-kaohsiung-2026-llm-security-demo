@@ -1,0 +1,25 @@
+{
+  "scene": "raw-api",
+  "requested_mode": "auto",
+  "selected_mode": "live",
+  "started_at": "2026-11-03T01:24:43.830249+08:00",
+  "live_attempted": true,
+  "live_passed": true,
+  "replay_shown": false,
+  "presentation_ready": true,
+  "reason": "live_passed",
+  "returncode": 0,
+  "assertions": {
+    "three_settings": true,
+    "http_ok": true,
+    "native_thinking_leak_observed": true,
+    "think_false_no_native_field": true
+  },
+  "command": [
+    "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+    "tech-demo/a_raw_api/probe_raw.py",
+    "--out-dir",
+    "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/evidence/rehearsal/20261103T012414-6n3ckxxi/raw-api/artifacts"
+  ],
+  "wall_seconds": 33.910858208007994
+}

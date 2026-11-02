@@ -247,3 +247,33 @@ START M8 integrity: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-de
 END M8 integrity: exit=0, 0.31s
 START M8 final env: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/check_env.py
 END M8 final env: exit=0, 0.37s
+[devfest-kh-2026 067a3c3] devfest-kh: M8 deliver real current-machine fallbacks and stage runsheet
+ 56 files changed, 1343 insertions(+), 347 deletions(-)
+ create mode 100644 evidence/run-20261103/m8/delivery-manifest.json
+ create mode 100644 evidence/run-20261103/m8/final-env-check.txt
+ create mode 100644 evidence/run-20261103/m8/integrity.json
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/a-raw-json.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/b-compare.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/c-pytest.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/d-harness.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/s1-attack-zh.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/s1-attack.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/s1-defended-zh.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/s1-defended.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/s2-attack.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/s2-defended.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/s3-attack.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/s3-audit.jsonl
+ create mode 100644 evidence/run-20261103/previous/delivery/devfest-kh/s3-defended.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/README.md
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/m3-raw-json.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/m4-compare.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/m5-pytest.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/m6-harness.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/s06-s1-attack.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/s07-answer.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/s07-thinking.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/s19-s1-defended.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/s20-s2.txt
+ create mode 100644 evidence/run-20261103/previous/delivery/screenshots/s21-s3.txt
+ALL STAGES EXECUTED: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/evidence/run-20261103

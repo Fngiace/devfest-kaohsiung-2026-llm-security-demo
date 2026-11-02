@@ -1,4 +1,4 @@
-# generated_at=2026-11-03T01:21:36.578201+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b machine=Apple M1 Pro
+# generated_at=2026-11-03T01:23:41.320568+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b machine=Apple M1 Pro
 ============================= test session starts ==============================
 platform darwin -- Python 3.12.15, pytest-9.2.0, pluggy-1.7.0 -- /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python
 cachedir: .pytest_cache

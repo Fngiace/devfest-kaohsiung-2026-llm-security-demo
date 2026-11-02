@@ -18,3 +18,5 @@
 {"timestamp": "2026-11-03T01:21:29.725913+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "deny", "rule": "roles.support_agent.deny_patterns:delete_*"}
 {"timestamp": "2026-11-03T01:21:32.626074+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "deny", "rule": "roles.support_agent.deny_patterns:delete_*"}
 {"timestamp": "2026-11-03T01:21:35.503426+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "deny", "rule": "roles.support_agent.deny_patterns:delete_*"}
+{"timestamp": "2026-11-03T01:25:31.246629+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "allow", "rule": "demo.unguarded_dispatch"}
+{"timestamp": "2026-11-03T01:25:34.626108+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "deny", "rule": "roles.support_agent.deny_patterns:delete_*"}

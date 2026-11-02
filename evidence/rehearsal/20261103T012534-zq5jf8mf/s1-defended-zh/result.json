@@ -1,0 +1,14 @@
+{
+  "scene": "s1-defended-zh",
+  "requested_mode": "replay",
+  "selected_mode": "replay",
+  "started_at": "2026-11-03T01:25:34.734615+08:00",
+  "live_attempted": false,
+  "live_passed": null,
+  "replay_shown": true,
+  "presentation_ready": true,
+  "reason": "planned_replay",
+  "returncode": null,
+  "assertions": {},
+  "wall_seconds": 0.00022529099078383297
+}

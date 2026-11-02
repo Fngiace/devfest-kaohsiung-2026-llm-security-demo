@@ -1,0 +1,24 @@
+{
+  "scene": "s3-attack",
+  "requested_mode": "auto",
+  "selected_mode": "live",
+  "started_at": "2026-11-03T01:25:28.298034+08:00",
+  "live_attempted": true,
+  "live_passed": true,
+  "replay_shown": false,
+  "presentation_ready": true,
+  "reason": "live_passed",
+  "returncode": 0,
+  "assertions": {
+    "actual_model_called": true,
+    "nonempty_model_content": true,
+    "data_deleted": true
+  },
+  "command": [
+    "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+    "scenario3-agent-privilege/attack.py",
+    "--live",
+    "--no-save"
+  ],
+  "wall_seconds": 3.0319147919944953
+}

@@ -1,4 +1,4 @@
-# generated_at=2026-11-03T01:21:36.578201+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b machine=Apple M1 Pro
+# generated_at=2026-11-03T01:23:41.320568+08:00 model_digest=eb2177adf7646d15faead94fdad6d3e170dc8015653418a3b7d5d52a6380be5b machine=Apple M1 Pro
 {"timestamp": "2026-11-03T01:12:23.763630+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "allow", "rule": "demo.unguarded_dispatch"}
 {"timestamp": "2026-11-03T01:12:26.430696+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "allow", "rule": "demo.unguarded_dispatch"}
 {"timestamp": "2026-11-03T01:12:29.094417+08:00", "role": "support_agent", "tool": "delete_all_data", "parameters": {"input": "customer_db.json"}, "decision": "allow", "rule": "demo.unguarded_dispatch"}

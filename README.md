@@ -2,11 +2,11 @@
 
 議程：**它拒絕了，但思考鏈出賣了它**（2026-11-14，40 分鐘）。
 
-在 Apple M2 上以本機 Ollama `gemma4:e4b` 重驗三場景，並提供原始 API、fail-open、正規化機密掃描、評測工具與權限稽核的 terminal demo。
+在 Apple M1 Pro／32GB 候選上台機，以本機 Ollama `gemma4:e4b` 重驗三場景，並提供原始 API、fail-open、正規化機密掃描、評測工具與權限稽核的 terminal demo。先前 M2 紀錄保留在歷史證據中。
 
 目前驗收狀態與實測限制以 [REPORT.md](REPORT.md) 為準；不要把程式已寫好視為模型實測通過。
 
-最新演示入口彩排已完成：57 項測試通過，11 段約 130 秒（9 段現跑、2 段歷史備援）。詳細證據見報告第 9 節。
+2026-11-03 重新執行 M0–M8：第一輪 24/24、回歸 23/24，兩輪防禦共 24/24 通過。57 項單元測試通過，整個程序 0.96 秒。RAG 攻擊兩輪合計 5/6；fail-open 掃描未找到連續 5/5 的 N，兩段採用這台機器保存的真實回應備援。完整彩排 80.72 秒，9 段 LIVE 通過、2 段備援。詳細證據見 [本次目錄](evidence/run-20261103/) 與報告。
 
 ## 先看成果
 
@@ -29,7 +29,7 @@ venv/bin/python scripts/demo.py
 
 ```sh
 venv/bin/python scripts/demo.py --rehearse
-venv/bin/python scripts/demo.py --scene fail-open --mode live
+venv/bin/python scripts/demo.py --scene fail-open --mode replay
 venv/bin/python scripts/demo.py --scene s2-attack --mode replay
 venv/bin/python scripts/demo.py --list
 ```

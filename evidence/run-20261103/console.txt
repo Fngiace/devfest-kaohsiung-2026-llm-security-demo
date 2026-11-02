@@ -88,3 +88,8 @@ END M1: exit=0, 259.60s
  create mode 100644 evidence/run-20261103/m1/s3-defended-3.txt
 START M2: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/build_timing.py --source /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/evidence/run-20261103/m1/results.json
 END M2: exit=0, 0.05s
+[devfest-kh-2026 3268cf4] devfest-kh: M2 publish this laptop's measured timing and live recommendations
+ 6 files changed, 119 insertions(+), 11 deletions(-)
+ create mode 100644 evidence/run-20261103/m2/timing.txt
+START M3: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python tech-demo/a_raw_api/probe_raw.py --out-dir /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/evidence/run-20261103/m3/out
+END M3: exit=0, 35.59s

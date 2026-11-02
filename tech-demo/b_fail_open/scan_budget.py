@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import argparse
+import os
 from pathlib import Path
 import runpy
 import sys
@@ -23,9 +24,11 @@ def payload_for(n: int) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--extended", action="store_true")
+    parser.add_argument("--out-dir", type=Path, help="新的掃描證據目錄，保留其他機器的舊結果")
     args = parser.parse_args()
     candidates = CANDIDATES + ([320, 384, 448, 512, 640, 768, 896, 1024] if args.extended else [])
-    out = HERE / "out" / "extended" if args.extended else HERE / "out"
+    out = args.out_dir or (HERE / "out" / "extended" if args.extended else HERE / "out")
+    out = out.resolve()
     if (out / "scan-results.json").exists():
         raise SystemExit("Refusing to overwrite an existing scan; preserve evidence first.")
     trials = []
@@ -55,7 +58,7 @@ def main() -> None:
             break
     save_json(HERE / "config.json", {"num_predict": found, "temperature": 0, "seed": 42,
               "candidate_grid": candidates, "minimum_scope": "minimum in declared candidate grid, not all positive integers",
-              "evidence_directory": str(out.relative_to(HERE)),
+              "evidence_directory": os.path.relpath(out, HERE),
               "status": "verified_5_consecutive" if found else "not_reproduced",
               "prompt_source": "scenario1-systemprompt/attack_zh.py:ATTACKS[0]",
               "fallback_num_predict": candidates[-1]})

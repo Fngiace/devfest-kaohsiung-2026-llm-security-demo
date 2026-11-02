@@ -55,5 +55,20 @@
     "wall_seconds": 0.3172820410109125,
     "finished_at": "2026-11-03T01:08:18.286232+08:00",
     "output": "evidence/run-20261103/m0/check.txt"
+  },
+  {
+    "stage": "M1",
+    "command": [
+      "/Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python",
+      "scripts/run_matrix.py",
+      "--phase",
+      "run-20261103/m1",
+      "--repeats",
+      "3"
+    ],
+    "returncode": 0,
+    "wall_seconds": 259.59739408300084,
+    "finished_at": "2026-11-03T01:12:37.932991+08:00",
+    "output": "evidence/run-20261103/m1/console.txt"
   }
 ]

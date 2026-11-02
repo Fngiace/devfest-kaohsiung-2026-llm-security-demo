@@ -8,3 +8,29 @@ START M0 capture: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo
 END M0 capture: exit=0, 0.36s
 START M0 check: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/check_env.py
 END M0 check: exit=0, 0.32s
+[devfest-kh-2026 10313c3] devfest-kh: M0 lock actual candidate laptop and local model
+ 24 files changed, 5144 insertions(+), 140 deletions(-)
+ create mode 100644 evidence/run-20261103/commands.json
+ create mode 100644 evidence/run-20261103/console.txt
+ create mode 100644 evidence/run-20261103/m0/capture.txt
+ create mode 100644 evidence/run-20261103/m0/check.txt
+ create mode 100644 evidence/run-20261103/m0/env-lock.json
+ create mode 100644 evidence/run-20261103/m0/ollama-list.txt
+ create mode 100644 evidence/run-20261103/m0/ollama-show.txt
+ create mode 100644 evidence/run-20261103/m0/ollama-version.txt
+ create mode 100644 evidence/run-20261103/previous/REPORT.md
+ create mode 100644 evidence/run-20261103/previous/RUNSHEET-devfest-kh.md
+ create mode 100644 evidence/run-20261103/previous/config.json
+ create mode 100644 evidence/run-20261103/previous/env-lock.json
+ create mode 100644 evidence/run-20261103/previous/timing-m2.md
+ create mode 100644 evidence/run-20261103/setup/harness.txt
+ create mode 100644 evidence/run-20261103/setup/initial-pytest.txt
+ create mode 100644 evidence/run-20261103/setup/integrity.json
+ create mode 100644 evidence/run-20261103/setup/machine-preflight.json
+ create mode 100644 evidence/run-20261103/setup/ollama-pull.txt
+ create mode 100644 evidence/run-20261103/setup/pip-install.txt
+ create mode 100644 evidence/run-20261103/setup/preflight-pytest.txt
+ create mode 100644 evidence/run-20261103/setup/screenshot-capability.txt
+ create mode 100644 evidence/run-20261103/stage-status.json
+START M1: /Users/fngi/Downloads/devfest-kaohsiung-2026-llm-security-demo-devfest-kh-2026/venv/bin/python scripts/run_matrix.py --phase run-20261103/m1 --repeats 3
+END M1: exit=0, 259.60s

@@ -4,6 +4,8 @@
 
 這個 repo 是現場 demo 的完整程式碼：在本機 Ollama 的 `gemma4:e4b` 上重現三個 LLM 應用安全問題，並示範對應的防禦。全程只呼叫本機模型（`http://localhost:11434`），不使用雲端 API，也不用 LLM 當裁判，判定一律是確定性的字串比對。
 
+議程、技術內容與會眾操作的互動前端統一使用 **DevFest 高雄 2026** 與議程 **「它拒絕了，但思考鏈出賣了它」** 的品牌文案。
+
 > 所有「機密」都是示範用的假字串（canary），客戶資料是每次執行新建的沙盒假資料。
 
 ## 三個場景
@@ -23,7 +25,18 @@
 - **C　單元測試**：`pytest -v`，包含正規化掃描（NFKC、零寬字元、分隔符、大小寫、base64／hex）。
 - **D　測試工具自我檢查**：`naive` 判定器只看 success 欄位，`strict` 會檢查斷言有沒有真的執行、判定的是不是 `answer`、對照組有沒有被抓到。測資為合成資料，執行時第一行會印出警語。
 
-## 快速開始
+## 快速開始（會眾本機體驗）
+
+### 一鍵啟動本機網頁實驗室（macOS / Windows）
+
+不需手動敲指令，裝完即可在自己的瀏覽器親手修改 Prompt 與污染文件，並同時比較「無防禦 vs. 有防禦」：
+
+1. 先安裝 [Python 3.12](https://www.python.org) 與 [Ollama](https://ollama.com)（若只想看已保存的「離線重播」，可略過 Ollama）。
+2. **macOS**：雙擊 `Install-Web-Demo.command` 完成安裝，之後雙擊 `Start-Web-Demo.command`。
+3. **Windows**：雙擊 `Install-Web-Demo.bat` 完成安裝，之後雙擊 `Start-Web-Demo.bat`。
+4. 瀏覽器會自動開啟 `http://127.0.0.1:8765`（僅綁定本機 Loopback，不對外開放）。
+
+### 終端機手動安裝與執行
 
 需要 Python 3.12 與 [Ollama](https://ollama.com)。
 
@@ -32,6 +45,12 @@ python3 -m venv venv
 venv/bin/python -m pip install -r requirements.txt -r requirements-dev.txt
 ollama pull gemma4:e4b
 ollama serve   # 或開啟 Ollama App
+```
+
+啟動網頁實驗室：
+
+```sh
+venv/bin/python webdemo/server.py --open
 ```
 
 跑測試（不需要模型）：
@@ -66,7 +85,7 @@ venv/bin/python scenario1-systemprompt/attack_zh.py --live --no-save
 ## 重現時請注意
 
 - 模型輸出不是確定性的：同一支攻擊腳本不保證每次都洩漏，防禦腳本也不保證每次格式都合規。講者的測試中，RAG 攻擊在 6 次裡重現 5 次；fail-open 的截斷點沒有找到連續穩定重現的長度，所以現場用保存的真實回應重播。
-- `fallback-logs/` 是講者機器（Apple M1 Pro／32GB，Ollama，`gemma4:e4b`）上實際跑出的輸出，不是手寫的；`fallback-logs/scenario*.txt` 是 COSCUP 版本的紀錄。
+- `fallback-logs/devfest-kh/` 是講者機器（Apple M1 Pro／32GB，Ollama，`gemma4:e4b`）上實際跑出的 DevFest 輸出，不是手寫的。
 - `scenario3-agent-privilege/attack.py` 會**故意刪除**該次沙盒裡的 `customer_db.json`。每次執行都使用全新的 `sandbox/run-*`，並拒絕路徑逃逸，不會動到你的真實檔案。
 - 原始 API 與 debug 輸出刻意顯示 canary；防禦保護的是 `Returned to user`，不是把 debug log 變成可以公開的資料。
 - 正規化掃描**擋不住**翻譯、語意改寫或任意多層編碼；`retrieval_rail` 的 regex 只是示範，正式環境應搭配分類器。
@@ -82,8 +101,8 @@ tech-demo/               四個技術示範
 scripts/                 demo.py（舞台執行器）、check_env.py、run_matrix.py 等
 tests/                   單元測試
 fallback-logs/           已保存的真實輸出（備援）
-docs/COSCUP-README.md    這個專案的前身：COSCUP 版本的原始 README
-model-setup.md           模型安裝與探測紀錄
+webdemo/                 會眾用的本機互動網頁與 API
+AUDIENCE-PACKAGE.md      會眾發佈範圍與檔案清單
 ```
 
 ## 授權

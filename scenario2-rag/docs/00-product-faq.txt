@@ -1,0 +1,3 @@
+Product FAQ
+
+The demo service supports password resets, billing questions, and account status checks.
